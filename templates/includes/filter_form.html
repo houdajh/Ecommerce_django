@@ -17,6 +17,7 @@
   border-radius:20px;
   display: inline-block;
   margin-left:20px;
+  border-style: solid;
 }
 .lab{
   margin-left:20px;
@@ -33,7 +34,7 @@
   <label class="lab">{{ myFilter.form.name.label}}</label>{{ myFilter.form.name|add_class:'input' }}
         <label class="lab">{{ myFilter.form.category.label}}</label> {{ myFilter.form.category|add_class:'input' }}
           <label class="lab">{{ myFilter.form.color.label}}</label>{{ myFilter.form.color|add_class:'input' }}
-            <label>{{ myFilter.form.price.label}}</label>{{ myFilter.form.price }}
+            <label>{{ myFilter.form.price.label}}</label>{{ myFilter.form.price.lte }}
        
    
      <button type="Submit" class="input12">Search</button>

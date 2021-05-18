@@ -77,7 +77,8 @@ class Product(models.Model):
         self.rates = (self.good_rates-self.bad_rates)/(self.bad_rates +
                                                        self.good_rates) if self.bad_rates+self.good_rates != 0 else 0
         return self.rates
-
+    def old_price(self):
+        return self.price+3
 
 class ProductsRated(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

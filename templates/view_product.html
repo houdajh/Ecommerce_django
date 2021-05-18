@@ -400,14 +400,14 @@ img{
                             </div>
 
           <div class = "product-price">
-            <h4 class = "last-price">Old Price: <span>{{product.price}}+5</span></h4>
-            <h4 class = "new-price">New Price: <span>{{product.price}}</span></h4>
+            <h4 class = "last-price">Old Price: <span>{{product.old_price}} $</span></h4>
+            <h4 class = "new-price">New Price: <span>{{product.price}} $</span></h4>
           </div>
 
           <div class = "product-detail">
             <h2>about this item: </h2>
-            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</h6>
-            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</h6>
+            <h6>{{product.description}}</h6>
+            
             <ul>
               <li><i class="fas fa-check"></i></i>  Color: <span>{{product.color}}</span></li>
               <li><i class="fas fa-check"></i></i>  Available: <span>in stock</span></li>

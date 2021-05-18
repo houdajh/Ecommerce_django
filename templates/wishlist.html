@@ -13,9 +13,9 @@
 	<div class="container">
 		<div class="row cont">
 			{% for product in products %}
-			<div id="myWish-{{product.id}}" class="col-lg-4">
-				<div class="card" style="width: 18rem">
-					 <a href="{% url 'view_product' product.id %}"><img src="{{product.photo.url}}" class="card-img-top" alt=""></a>
+			<div id="myWish-{{product.id}}"  class="col-lg-4">
+				<div class="card" style=" width:16em;">
+					 <a href="{% url 'view_product' product.id %}"><img style="height:18em; width:16em;" src="{{product.product.photo.url}}" class="card-img-top" alt=""></a>
 					<div class="card-body">
 						<h5 class="card-title">{{product}}</h5>
 						<hr />
