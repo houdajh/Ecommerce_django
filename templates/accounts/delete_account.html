@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block mainNavBar %}
+{% include "includes/topNavBar.html" %}
+{% endblock mainNavBar %}
+
+{% block title %}Delete account{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item active">Delete account</li>
+{% endblock %}
+
+{% block content %}
+<style>
+.delete{
+    margin:150px;
+}
+</style>
+<div class="row ">
+	<div class="col-md-6">
+		<div class=" delete">
+
+
+			<h5>Are you sure you want to delete account ?</h5>
+            <br/><br/><br/><br/>
+
+
+			<form action="{% url 'delete_account'  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Confirm">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends 'dashboard_seller/dashboard.html' %}
+
+{% block content %}
+<style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .chart--container {
+        height: 100%;
+        width: 100%;
+        min-height: 150px;
+    }
+    .zc-ref {
+        display: none;
+    }
+</style>
+
+<head>
+    <!--Script Reference[1] -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Chart Placement[2] -->
+    <h2> show products</h2>
+    <div id="myChart"></div>
+
+    <script>
+        var state = {
+            'items': [],
+            'values': [],
+        }
+        var dataURL = `/resultsdata/`
+        $.ajax({
+            method: 'GET',
+            url: dataURL,
+            success: function (response) {
+                console.log('RESPONSE:', response)
+                for (var i in response) {
+                    var key = Object.keys(response[i])[0]
+                    var value = Object.values(response[i])[0]
+                    state.items.push(key)
+                    state.values.push(value)
+                }
+                console.log('STATE :', state)
+                buildChart()
+            }
+        })
+        function buildChart() {
+            var chartData = {
+                "type": "bar",
+                "scale-x": {
+                    "label": { text: 'product name' },
+                    "values": state.items
+                },
+                 "scale-y": {
+                    "label": { text: 'Quantity' },
+                  
+                },
+                plot: {
+    // Animation docs here:
+    // https://www.zingchart.com/docs/tutorials/styling/animation#effect
+    animation: {
+      effect: 'ANIMATION_EXPAND_BOTTOM',
+      method: 'ANIMATION_STRONG_EASE_OUT',
+      sequence: 'ANIMATION_BY_NODE',
+      speed: 1275,
+    }
+  },
+                "series": [
+                    {
+                        "values": state.values
+                    }]
+            }
+            zingchart.render({
+                id: "myChart",
+                data: chartData,
+            })
+        }
+    </script>
+</body>
+
+</html>
+{% endblock %}

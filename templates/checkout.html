@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block main_navbar %}
+{% include "includes/top_navbar.html" %}
+{% endblock main_navbar %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylecheckout.css' %}">
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="card my-4 p-3">
+
+            <form method="POST" class="form-card">
+            {% csrf_token %}
+                 <div class="row">
+                    <div class="col-12">
+                        <div class="form-group"> 
+                        <input type="text" class="form-control p-0" id="number" required value="{{ user.username }}" >
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+
+                    <div class="col-12">
+                        <div class="form-group"> 
+                        <input type="text" class="form-control p-0" id="number" required value=" {{ user.email }}">
+                        </div>
+                    </div>
+                </div>
+                      <div class="col-12">
+                        <div class="form-group"> 
+                        {{ form.adress_1 }}
+                        <label class="form-control-placeholder p-0" for="passw">Adress 1 </label>
+                         </div>
+                    </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group"> 
+                        {{ form.adress_2 }}
+                        <label class="form-control-placeholder p-0" for="name">Adress 2 (optional)</label> </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-12">
+                        <div class="form-group">
+                         {{ form.country }}
+                        <!--<label class="form-control-placeholder p-0" for="expdate">Country</label>-->
+                         </div>
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="form-group"> 
+                        {{ form.zip_code }}
+                        <label class="form-control-placeholder p-0" for="passw">Zip</label>
+                         </div>
+                    </div>
+                  <h3>Payment option</h3>
+              <div class="d-block my-3">
+                {% for value, name in form.fields.payment_option.choices %}
+                <div class="custom-control custom-radio">
+                  <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+                </div>
+                {% endfor %}
+              </div>
+                <div class="d-flex align-items-center flex-fill my-1" id="total">
+                    <p class="pt-2">Total:</p>
+                    <input type="text" class="form-control" id="totalapayer" value="{{total_price}}">
+                </div>
+                <div class="d-flex justify-content-between text-center mt-4" id="btns">
+                    <button href="#" type="button" id="btn" class="btn-block pr-6"><a href="{% url 'cart' %}" class="btn btn-outline-success">Back To Your Cart</a></button> 
+                    <button type="submit" class="btn btn-primary btn-block" id="btn">Pay</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

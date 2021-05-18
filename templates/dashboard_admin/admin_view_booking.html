@@ -1,0 +1,63 @@
+{% extends 'dashboard_admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<br> <br> <br><br>
+<div class="container">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h6 class="panel-title">Total Orders</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Customer Mobile</th>
+          <th>Shipment Address</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <!-- p for product, c for customer-->
+     {% for order in data %}
+        <tr>
+          
+         
+          <td> {{order.user.username}}</td>
+          <td> {{order.id}}</td>
+          <td> {{order.checkout_adress.adress_1}}</td>
+
+
+          {% if order.status == 'Pending'%}
+          <td> <span class="label label-info">{{order.status}}</span></td>
+          {% elif order.status == 'Delivered' %}
+          <td> <span class="label label-success">{{order.status}}</span></td>
+          {% elif order.status == 'Out for Delivery' %}
+          <td> <span class="label label-warning">{{order.status}}</span></td>
+          {%else%}
+            <td> <span class="label label-info">{{order.status}}</span></td>
+          {%endif%}
+          
+        </tr>
+        {% endfor %}
+    </table>
+  </div>
+</div>
+{% endblock content %}

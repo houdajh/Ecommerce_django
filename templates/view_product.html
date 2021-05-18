@@ -1,0 +1,483 @@
+{% extends 'base.html'%}
+
+{% block title %}
+{{product.name}}
+{% endblock title %}
+
+{% block style %}
+
+
+{% endblock style %}
+
+{% block main_navbar %}{% include "includes/top_navbar.html" %}{% endblock main_navbar %}
+
+{% block content %}
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+body{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+    
+}
+
+.card-wrapper1{
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top:100px;
+    margin-bottom:100px;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.img-display{
+    overflow: hidden;
+}
+.img-showcase{
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.img-showcase img{
+    min-width: 100%;
+}
+.img-select{
+    display: flex;
+}
+.img-item{
+    margin: 0.3rem;
+}
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3){
+    margin-right: 0;
+}
+.img-item:hover{
+    opacity: 0.8;
+}
+.product-content{
+    padding: 2rem 1rem;
+}
+.product-title{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+}
+.product-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    background: #256eff;
+    color: #fff;
+    padding: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+.product-link:hover{
+    opacity: 0.9;
+}
+.product-rating{
+    color: #ffc107;
+}
+.product-rating span{
+    font-weight: 600;
+    color: #252525;
+}
+.product-price{
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.product-price span{
+    font-weight: 400;
+}
+.last-price span{
+    color: #f64749;
+    text-decoration: line-through;
+}
+.new-price span{
+    color: #256eff;
+}
+.product-detail h2{
+    text-transform: capitalize;
+    color: #12263a;
+    padding-bottom: 0.6rem;
+}
+.product-detail h6{
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    opacity: 0.8;
+}
+.product-detail ul{
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+.product-detail ul li{
+    margin: 0;
+    list-style: none;
+    background-size: 18px;
+    padding-left: 1.7rem;
+    margin: 0.4rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+    color:black;
+}
+.product-detail ul li span{
+    font-weight: 400;
+}
+.product-detail ul li i{
+    color:blue;
+    font-size:20px;
+}
+.purchase-info{
+    margin: 1.5rem 0;
+}
+.purchase-info input,
+.purchase-info .btn{
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+}
+.purchase-info input{
+    width: 60px;
+}
+.purchase-info .btn{
+    cursor: pointer;
+    color: #fff;
+}
+.purchase-info .btn:first-of-type{
+    background: rgba(97,188,217);
+}
+.purchase-info .btn:last-of-type{
+    background: rgb(245,214,149);
+}
+.purchase-info .btn:hover{
+    opacity: 0.9;
+}
+
+@media screen and (min-width: 992px){
+    .card1{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+        background-color:white;
+    }
+    .card-wrapper1{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-imgs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product-content{
+        padding-top: 0;
+    }
+}
+    </style>
+    
+<body>
+
+{% comment %} 
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+
+    /*# sourceMappingURL=style.css.map */
+
+    <div class="container">
+        <div class="card1">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1"><img  src="{{product.photo.url}}" /></div>
+                        </div>
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{product.name}}</h3>
+                        <div class="rating">
+                            {% if rate_avg == 1 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 2 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 3 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 4 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 5 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            {% else %}
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% endif %}
+                            {{real_rate}}%
+                            <form action="{% url 'unrated' product.id %}" method="POST" novalidate>
+                                {% csrf_token %}
+                                <button type="submit" class=" s1 dislike"><i
+                                        class="bi bi-hand-thumbs-down-fill"></i></button>
+                            </form>
+                            <form action="{% url 'rated' product.id %}" method="POST" novalidate>
+                                {% csrf_token %}
+                                <button type="submit" class="s1 like"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+                            </form>
+                            <span class="review-no">41 reviews</span>
+                        </div>
+                        <p><strong>Category :</strong>{{product.category}}</p>
+                        <p class="product-description">{{product.description}}</p>
+                        <h4 class="price">current price: <span>{{product.price}}</span></h4>
+                        <p class="vote"><strong>{{real_rate}}%</strong> of buyers enjoyed this product! <strong>({{all_rates}} votes)</strong>
+                        </p>
+                        <div class="action">
+                            <button class="addCart btn btn-outline-success" id="addCart{{product.id}}"
+									data-catid="{{product.id}}" href="#">Add To Cart</button>
+                            <button id="addWishlist{{product.id}}" data-catid="{{product.id}}"
+                                class="addWishlist btn btn-outline-success" href="#">Add To WishList</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     {% endcomment %}
+     
+  
+    <div class = "card-wrapper1">
+      <div class = "card1">
+        <!-- card left -->
+        <div class = "product-imgs">
+          <div class = "img-display">
+            <div class = "img-showcase">
+              <img src="{{product.photo.url}}" alt = "shoe image">
+                <img src="{{product.photo.url}}" alt = "shoe image">
+                  <img src="{{product.photo.url}}" alt = "shoe image">
+                    <img src="{{product.photo.url}}" alt = "shoe image">
+             
+            </div>
+          </div>
+          <div class = "img-select">
+            <div class = "img-item">
+              <a href = "#" data-id = "1">
+                <img src="{{product.photo.url}}" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "2">
+                <img src="{{product.photo.url}}" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "3">
+                <img src="{{product.photo.url}}" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item">
+              <a href = "#" data-id = "4">
+                <img src="{{product.photo.url}}" alt = "shoe image">
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- card right -->
+        <div class = "product-content">
+          <h2 class = "product-title">{{product.name}}</h2>
+          <a href = "#" class = "product-link">visit nike store</a>
+          <div class="rating">
+                            {% if rate_avg == 1 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 2 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 3 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 4 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                            {% elif rate_avg == 5 %}
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            {% else %}
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            <i class="bi bi-star"></i>
+                            {% endif %}
+                            {{real_rate}}%
+                            <form action="{% url 'unrated' product.id %}" method="POST" novalidate>
+                                {% csrf_token %}
+                                <button type="submit" class=" s1 dislike"><i
+                                        class="bi bi-hand-thumbs-down-fill"></i></button>
+                            </form>
+                            <form action="{% url 'rated' product.id %}" method="POST" novalidate>
+                                {% csrf_token %}
+                                <button type="submit" class="s1 like"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+                            </form>
+                            </div>
+
+          <div class = "product-price">
+            <h4 class = "last-price">Old Price: <span>{{product.price}}+5</span></h4>
+            <h4 class = "new-price">New Price: <span>{{product.price}}</span></h4>
+          </div>
+
+          <div class = "product-detail">
+            <h2>about this item: </h2>
+            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!</h6>
+            <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</h6>
+            <ul>
+              <li><i class="fas fa-check"></i></i>  Color: <span>{{product.color}}</span></li>
+              <li><i class="fas fa-check"></i></i>  Available: <span>in stock</span></li>
+              <li><i class="fas fa-check"></i></i>  Category: <span>{{product.category}}</span></li>
+              <li><i class="fas fa-check"></i><i class="fas fa-badge-check"></i>  Shipping Area: <span>All over the world</span></li>
+              <li><i class="fas fa-check"></i></i>  Shipping Fee: <span>Free</span></li>
+            </ul>
+          </div>
+
+          <div class = "purchase-info">
+            
+            <button type = "button" class = "btn">
+              Add to Cart <i class = "fas fa-shopping-cart"></i>
+            </button>
+            <button type = "button" class = "btn"> Add to wishlist <i class="fas fa-shopping-basket"></i></button>
+          </div>
+</div>
+</div>
+ </div>
+ </body>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+	$('.addCart').click(function () {
+		var catid = $(this).attr("data-catid");
+		$.ajax({
+			type: 'GET',
+			url: "/add_cart/".concat(catid),
+			data: {
+				product_id: catid
+			},
+			success: function (data) {
+				$('#total').replaceWith(data.total_price);
+				$('#numCarts').replaceWith(data.num_carts);
+			},
+		})
+	});
+	$('.addWishlist').click(function () {
+		var catid = $(this).attr("data-catid");
+		$.ajax({
+			type: 'GET',
+			url: "/add_wishlist/".concat(catid),
+			data: {
+				product_id: catid
+			},
+			success: function (data) {
+				$('#numWishes').replaceWith(data.num_wishes);
+			},
+		})
+	});
+    const imgs = document.querySelectorAll('.img-select a');
+const imgBtns = [...imgs];
+let imgId = 1;
+
+imgBtns.forEach((imgItem) => {
+    imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        imgId = imgItem.dataset.id;
+        slideImage();
+    });
+});
+
+function slideImage(){
+    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+
+    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+}
+
+window.addEventListener('resize', slideImage);
+</script>
+{% endblock script %}

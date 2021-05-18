@@ -1,0 +1,25 @@
+{% if user.is_authenticated %}
+<nav class="main_nav">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="main_nav_content d-flex flex-row">
+                    <!-- Main Nav Menu -->
+                    <div class="main_nav_menu">
+                        <ul class="standard_dropdown main_nav_dropdown">
+                            <div class="d-flex">
+                                {% for categorie in categories %}
+                                <li class="hassubs"><a href="{% url 'categorie' categorie.pk %}">{{categorie}}</a>
+                                </li>
+                                {% endfor %}
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+{% else %}
+
+{% endif %}

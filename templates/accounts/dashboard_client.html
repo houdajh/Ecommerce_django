@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if user.is_authenticated %}
+Welcome {{user.username}}
+{%else%}
+DashBoard Client
+{% endif %}
+{% endblock title %}

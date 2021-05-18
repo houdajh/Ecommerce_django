@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../static/home/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/home/assets/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="../static/home/assets/css/owl.css">
+
+    {% block head %}
+        {% include 'static/css.html' %}
+        {% block style %}{% endblock style %}
+        <title>{% block title %}{% endblock title %}</title>
+        <script type="text/javascript">
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrf =getToken('csrftoken'); 
+    </script >
+    {% endblock head %}
+</head>
+
+<body id="body">
+    {% block body %}
+    {% block main_navbar %}
+        {% include "includes/navbar.html" %}
+    {% endblock main_navbar %}
+    {% block content %}{% endblock content %}
+    {% include "includes/footer.html" %}
+    {% endblock body %}
+    {% block script %}{% endblock script %}
+    {% include 'static/js.html' %}
+</body>
+<script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/owl.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/isotope.js"></script>
+    <script src="assets/js/accordions.js"></script>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+</html>

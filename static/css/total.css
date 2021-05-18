@@ -1,0 +1,51 @@
+.logo
+{
+    margin-left:30px;
+    margin-top:55px;
+}
+.card {
+    background-color: lightgray;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.name {
+    font-size: 15px;
+    color: #403f3f;
+    font-weight: bold
+}
+
+
+.first {
+    border-radius: 8px;
+    border: 1.5px solid #78b9ff;
+    color: #000;
+    background-color: #eaf4ff
+}
+
+.t {
+    color: #137ff3;
+    font-size: 12px;
+    margin-left:50px;
+    font-family: Arial, Helvetica, sans-serif;
+   font-size:20px;
+}
+
+.dollar {
+    font-size: 18px;
+    color: #097bf7
+}
+
+.amount {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left:60px;
+}
+#goback,#paynow {
+    width: 100px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 17px
+}

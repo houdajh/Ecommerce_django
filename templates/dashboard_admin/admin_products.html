@@ -1,0 +1,81 @@
+{% extends 'dashboard_admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+
+    .float{
+	position:fixed;
+	width:70px;
+	height:70px;
+	bottom:60px;
+	right:60px;
+	background-color:red;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 3px 3px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+  </style>
+</head>
+<br> <br> <br><br>
+<div class="container">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h6 class="panel-title">Total Product List</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Description</th>
+        
+        </tr>
+      </thead>
+      {% for p in products %}
+  {% if p %}
+
+      <tr>
+        <td> {{p.name}}</td>
+         
+        <td> <img src="{% static p.photo.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
+          
+          
+        <td>{{p.price}}</td>
+        <td>{{p.description}}</td>
+        
+      </tr>
+      {%else%}
+      <br><br><br>
+      <h1>No products</h1>
+      {% endif %}
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+{% endblock content %}

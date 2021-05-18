@@ -1,0 +1,51 @@
+{% extends 'dashboard_admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<br>
+{%include 'dashboard_admin/admin_dashboard_cards.html'%}
+<br><br><br><br><br>
+
+<hr><hr>
+<div class="container" >
+
+    <div class="panel panel-info" >
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Recent Booking</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>Order id</th>
+            <th>Customer Name</th>
+            <th>Shipment Address</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for order in data %}
+        <tr>
+          
+          <td> {{order.id}}</td>
+          <td> {{order.user.username}}</td>
+          <td> {{order.checkout_adress.adress_1}}</td>
+          
+
+
+          {% if order.status == 'Pending'%}
+          <td> <span class="label label-info">{{order.status}}</span></td>
+          {% elif order.status == 'Delivered' %}
+          <td> <span class="label label-success">{{order.status}}</span></td>
+          {% elif order.status == 'Out for Delivery' %}
+          <td> <span class="label label-warning">{{order.status}}</span></td>
+          {%else%}
+            <td> <span class="label label-info">{{order.status}}</span></td>
+          {%endif%}
+          
+        </tr>
+        {% endfor %}
+      </table>
+  </div>
+</div>
+
+
+{% endblock content %}

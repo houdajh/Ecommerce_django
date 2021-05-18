@@ -1,0 +1,41 @@
+
+
+
+ {% load widget_tweaks %}
+<style>
+
+.input12{
+  width: 200px;
+  margin: 12px;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  box-sizing: border-box;
+  resize: vertical;
+ 
+}
+.input{
+  border-radius:20px;
+  display: inline-block;
+  margin-left:20px;
+}
+.lab{
+  margin-left:20px;
+   font-weight:bold;
+}
+
+.r2{
+  margin-left:100x;
+}
+</style>
+<div id="myFilter">
+<form method="GET" onsubmit="refresh" >
+
+  <label class="lab">{{ myFilter.form.name.label}}</label>{{ myFilter.form.name|add_class:'input' }}
+        <label class="lab">{{ myFilter.form.category.label}}</label> {{ myFilter.form.category|add_class:'input' }}
+          <label class="lab">{{ myFilter.form.color.label}}</label>{{ myFilter.form.color|add_class:'input' }}
+            <label>{{ myFilter.form.price.label}}</label>{{ myFilter.form.price }}
+       
+   
+     <button type="Submit" class="input12">Search</button>
+</form>
+</div>

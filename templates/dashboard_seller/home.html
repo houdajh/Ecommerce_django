@@ -1,0 +1,171 @@
+{% extends 'dashboard_seller/dashboard.html' %}
+
+{% block content %}
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>panel dashboard widget - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	
+
+.dbox {
+    position: relative;
+    background: rgb(255, 86, 65);
+    background: -moz-linear-gradient(top, rgba(97,188,217) 0%, rgb(245,214,149) 100%);
+    background: -webkit-linear-gradient(top, rgba(97,188,217) 0%, rgb(245,214,149) 100%);
+    background: linear-gradient(to bottom, rgba(97,188,217) 0%, rgb(245,214,149) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ff5641', endColorstr='#fd3261', GradientType=0);
+    border-radius: 4px;
+    text-align: center;
+    margin: 60px 0 50px;
+}
+.dbox__icon {
+    position: absolute;
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+}
+.dbox__icon:before {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    background: #146ae3
+    background: rgba(20, 177, 227, 0.34);
+    content: '';
+    border-radius: 50%;
+    left: -17px;
+    top: -17px;
+    z-index: -2;
+}
+.dbox__icon:after {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background: #14b1e3;
+    background: rgba(20, 177, 227, 0.91);
+    content: '';
+    border-radius: 50%;
+    left: -10px;
+    top: -10px;
+    z-index: -1;
+}
+.dbox__icon > i {
+    background: #1459e3;
+    border-radius: 50%;
+    line-height: 40px;
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+	font-size:35px;
+}
+.dbox__body {
+    padding: 50px 20px;
+}
+.dbox__count {
+    display: block;
+    font-size: 30px;
+    color: #FFF;
+    font-weight: 300;
+}
+.dbox__title {
+    font-size: 21px;
+    font-weight:bold;
+    color: #FFF;
+    color: white;
+}
+.dbox__action {
+    transform: translateY(-50%) translateX(-50%);
+    position: absolute;
+    left: 50%;
+}
+.dbox__action__btn {
+    border: none;
+    background: #FFF;
+    border-radius: 19px;
+    padding: 7px 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: .5px;
+    color: #003e85;
+    box-shadow: 0 3px 5px #d4d4d4;
+}
+
+    </style>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container">
+	<div class="row">
+	  <div class="col-md-3 col-sm-4 col-xs-12">
+			<div class="dbox">
+				<div class="dbox__icon">
+				   <i class="fas fa-store-alt"></i>
+				</div>
+				<div class="dbox__body">
+					<span class="dbox__count">{{nb_products}}</span>
+					<span class="dbox__title">Total products</span>
+				</div>
+				
+				<div class="dbox__action">
+					<button class="dbox__action__btn">More Info</button>
+				</div>				
+			</div>
+		</div>
+		 <div class="col-md-3 col-sm-4 col-xs-12">
+			<div class="dbox ">
+				<div class="dbox__icon">
+					<i class="fas fa-shopping-basket"></i>
+				</div>
+				<div class="dbox__body">
+					<span class="dbox__count">{{products_ordered}}</span>
+					<span class="dbox__title">Total sold products</span>
+				</div>
+				
+				<div class="dbox__action">
+					<button class="dbox__action__btn">More Info</button>
+				</div>				
+			</div>
+		</div>
+	 <div class="col-md-3 col-sm-4 col-xs-12">
+			<div class="dbox ">
+				<div class="dbox__icon">
+					<i class="fas fa-box"></i>
+				</div>
+				<div class="dbox__body">
+					<span class="dbox__count">{{total_order}}</span>
+					<span class="dbox__title">Total Orders</span>
+				</div>
+        	<div class="dbox__action">
+					<button class="dbox__action__btn">More Info</button>
+				</div>				
+			</div>
+            </div>
+       <div class="col-md-3 col-sm-4 col-xs-12">
+			<div class="dbox ">
+				<div class="dbox__icon">
+					<i class="fas fa-dollar-sign"></i>
+				</div>
+				<div class="dbox__body">
+					<span class="dbox__count">{{paid_amount}}</span>
+					<span class="dbox__title">Earning</span>
+				</div>
+        	<div class="dbox__action">
+					<button class="dbox__action__btn">More Info</button>
+				</div>				
+			</div>
+</div>
+</div>
+</div>
+        
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>
+{% endblock content %}

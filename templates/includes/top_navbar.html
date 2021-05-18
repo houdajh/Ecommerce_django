@@ -1,0 +1,320 @@
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+  
+  
+  
+}
+
+
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffad57;
+    color: white;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: #ffad57;
+}
+
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+.wishlist_cart {
+    height: 90px;
+}
+
+.wishlist {
+    margin-right: 50px;
+}
+
+.wishlist_icon img {
+    width: 100%;
+}
+
+.wishlist_content {
+    margin-left: 14px;
+}
+
+.wishlist_text a {
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.wishlist_text a:hover {
+    color: red;
+}
+
+.wishlist_count {
+    margin-top: -2px;
+    color: white;
+    font-size: 14px;
+}
+
+.cart_count {
+    position: absolute;
+    bottom: -1px;
+    right: -14px;
+    width: 23px;
+    height: 23px;
+    background:#ffac53;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.cart_count span {
+    display: block;
+    line-height: 23px;
+    font-size: 12px;
+    color: #ffffff;
+    -webkit-transform: translateY(1px);
+    -moz-transform: translateY(1px);
+    -ms-transform: translateY(1px);
+    -o-transform: translateY(1px);
+    transform: translateY(1px);
+}
+
+.cart_icon img {
+    width: 100%;
+}
+
+.cart_content {
+    margin-left: 28px;
+}
+
+.cart_text a {
+    font-size: 18px;
+    font-weight: 400;
+    color:white;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.cart_text a:hover {
+    color: red;
+}
+
+.cart_price {
+    font-size: 14px;
+    color: white;
+    margin-top: -2px;
+}
+.fixNavigation{
+ z-index: 9999;
+ position: fixed;
+ background-color:#4a4949;
+ top: 0;
+ /* Mise en forme */
+ width: 100%; /* <-- Largeur de votre site */
+ }
+</style>
+
+
+  <header class="" id='navigation'>
+      <nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/logo.png"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link"  href="{% url 'home' %}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#product">Our Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+              </li>
+                {% if group == 'CLIENT' %}
+                 <li class="nav-item">
+                         
+                         
+                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                            <div class="wishlist_icon">
+                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918681/heart.png" alt="">
+                            </div>
+                            <div class="wishlist_content " id="wishlist">
+                                <div class="wishlist_text"><a href="{% url 'wishlist' %}">Wishlist</a></div>
+                                <div id="num_wishes" class="wishlist_count">{{num_wishes}}</div>
+                            </div>
+                        </div> <!-- Cart -->
+                    </li>
+                     <li class="nav-item">
+                        <div >
+                            <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                <div class="cart_icon "><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918704/cart.png" alt="">
+                                    <div id="num_carts" class="cart_count"><span>{{num_carts}}</span></div>
+                                </div>
+                                <div class="cart_content me-2">
+                                    <div class="cart_text"><a href="{% url 'cart' %}">Cart</a></div>
+                                    <div id="total" class="cart_price">${{total_price}}</div>
+                                </div>
+                            </div>
+                            </li>
+                     <li class="nav-item">
+                              <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">{{user.username}}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{% url 'view_account' %}">My Account</a></li>
+                        <li><a class="dropdown-item" href="{% url 'password_reset' %}">Forget Password</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+                </li>
+                    {% endif %}
+                    
+    </div>
+      </nav>
+    </header>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+$(function(){
+// On recupere la position du bloc par rapport au haut du site
+var position_top_raccourci = $("#navigation").offset().top;
+
+//Au scroll dans la fenetre on déclenche la fonction
+$(window).scroll(function () {
+
+//si on a defile de plus de 150px du haut vers le bas
+if ($(this).scrollTop() > position_top_raccourci) {
+
+//on ajoute la classe "fixNavigation" a <div id="navigation">
+$('#navigation').addClass("fixNavigation"); 
+} else {
+
+//sinon on retire la classe "fixNavigation" a <div id="navigation">
+$('#navigation').removeClass("fixNavigation");
+}
+});
+});
+    $(function () {
+        $("#search").autocomplete({
+            source: "{% url 'search_form' %}",
+            select: function (event, ui) {
+                window.location.href = ui.item.value;
+            }
+        });
+    });
+
+
+const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
+})
+
+</script>

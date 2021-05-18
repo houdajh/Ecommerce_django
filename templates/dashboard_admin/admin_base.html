@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+
+        /*---------------------------------------
+           Social section
+        -----------------------------------------*/
+        footer {
+          padding: 0px 0px 0px 0px;
+          background-color: #343A40;
+          margin: 0px;
+        }
+
+
+        #ftr {
+
+          padding: 20px;
+        }
+
+        .fa {
+
+          font-size: 23px;
+          width: 60px;
+          text-align: center;
+          text-decoration: none;
+          margin: 5px 2px;
+          border-radius: 50%;
+        }
+
+        .fa:hover {
+          opacity: 0.5;
+          text-decoration: none;
+        }
+
+        .fa-facebook {
+          background: #3B5998;
+          color: white;
+          margin-top: 30px;
+        }
+
+        .fa-whatsapp {
+          background: #25d366;
+          color: white;
+        }
+
+        .fa-twitter {
+          background: #55ACEE;
+          color: white;
+        }
+
+        .fa-instagram {
+          background: #125688;
+          color: white;
+        }
+
+        p {
+          text-align: center;
+
+        }
+  
+
+
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+  
+  
+  
+}
+
+
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffad57;
+    color: white;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.navbar-links li:hover {
+    background-color: #ffad57;
+}
+
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+.fixNavigation{
+ z-index: 9999;
+ position: fixed;
+ background-color:#343A40;
+ top: 0;
+ /* Mise en forme */
+ width: 100%; /* <-- Largeur de votre site */
+ }
+</style>
+
+
+  <header class="" id='navigation'>
+      <nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'dashboard_admin' %}"><img src="../static/images/logo.png" height="40px" width="91px"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+              <a class="nav-link" href="{% url 'view_customer' %}" >Customer
+              <span class="sr-only">(current)</span></a>
+                
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_view_booking' %}">Booking</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_products' %}">Products</a>
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin_sellers' %}">Sellers</a>
+                
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'view_feedback' %}">Feedback</a>
+              </li>
+              <div class="navbar-nav navbar-right">
+          <a href="{% url 'logout' %}" class="nav-item nav-link">LOGOUT</a>
+        </div>
+
+              </div>
+              
+
+      </nav>
+    </header>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+$(function(){
+// On recupere la position du bloc par rapport au haut du site
+var position_top_raccourci = $("#navigation").offset().top;
+
+//Au scroll dans la fenetre on déclenche la fonction
+$(window).scroll(function () {
+
+//si on a defile de plus de 150px du haut vers le bas
+if ($(this).scrollTop() > position_top_raccourci) {
+
+//on ajoute la classe "fixNavigation" a <div id="navigation">
+$('#navigation').addClass("fixNavigation"); 
+} else {
+
+//sinon on retire la classe "fixNavigation" a <div id="navigation">
+$('#navigation').removeClass("fixNavigation");
+}
+});
+});
+    $(function () {
+        $("#search").autocomplete({
+            source: "{% url 'search_form' %}",
+            select: function (event, ui) {
+                window.location.href = ui.item.value;
+            }
+        });
+    });
+
+
+const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
+})
+
+</script>
+  <!-- content start-->
+  {% block content %}
+   <br> <br> <br><br><br><br><br><br>
+   
+  {% endblock content %}
+  <!-- content end-->
+<br><br><br><br><br><br><br><br>
+<br> <br> <br><br><br><br><br><br>
+  <footer>
+    <p>
+    <a  href="{% url 'dashboard_admin' %}"><img src="../static/images/logo.png" ></a>
+      
+    </p>
+
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <div style="color:#ffffff;" class="wow fadeInUp footer-copyright">
+            <p>ENSIAS <br>
+              Copyright &copy; HOUDA JOUHAR & IKRAM NOUIGA </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+ 
+</body>
+</html>

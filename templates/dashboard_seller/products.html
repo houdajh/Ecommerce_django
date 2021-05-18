@@ -1,0 +1,110 @@
+
+{% extends 'dashboard_seller/dashboard.html' %}
+{% load static %} 
+{% block content %}
+
+<style  type="text/css">
+.form1{
+  width: 700px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  margin-left:250px;
+  place-items: center;
+  
+
+}
+.form_in{
+  padding-left:100px;
+  padding-right:100px;
+}
+.form1 .title1{
+  
+  font-size: 35px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 70px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(-135deg, #f5d695, #61bcd9);
+}
+.input1{
+  font-size:22px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 40px;
+ 
+  width:100%;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 15px 15px;
+  background: linear-gradient(-135deg, #f5d695, #61bcd9);
+  
+ 
+}
+.icon1:before {
+    width: 75px;
+    height: 75px;
+}
+.affiche{
+    margin-top:100px;
+}
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form1">
+            <h2 class="title1">Add new Product</h2>
+           <form class="form_in"  method="POST" action='' enctype="multipart/form-data" id="ajouterEL">
+                {% csrf_token %}
+                
+                {{form.media}}
+                {% include "includes/form.html" %}
+                <div class="input1">
+                <input  type="Submit" class="input1" value="SUBMIT"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+   
+
+{% include 'includes/filter_form.html' %}
+</div>
+<div class="row affiche">
+    <div class="col-md">
+        <div class="card card-body">
+            <h2>List of your products</h2>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                {% for i in products %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td><a class="icon1" href="{% url 'update_product' i.id %}"><i class="fas fa-edit"></i></a></td>
+                      <td><a class="btn btn-sm btn-danger" href="{% url 'delete_product' i.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" 
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+            crossorigin="anonymous"></script>
+  
+    <script type="text/javascript">
+    
+    </script>
+    {% endblock %}

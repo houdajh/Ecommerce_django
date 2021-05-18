@@ -1,0 +1,67 @@
+<!-- prettier-ignore -->
+{% extends 'base.html'%}
+{% block title %}Wishlist{% endblock title %}
+{% block main_navbar %}{% include "includes/top_navbar.html" %}{% endblock main_navbar %}
+{% block content %}
+<style>
+.cont{
+	margin-top:200px;
+	margin-bottom:100px;
+}
+</style>
+<div class="d-flex">
+	<div class="container">
+		<div class="row cont">
+			{% for product in products %}
+			<div id="myWish-{{product.id}}" class="col-lg-4">
+				<div class="card" style="width: 18rem">
+					 <a href="{% url 'view_product' product.id %}"><img src="{{product.photo.url}}" class="card-img-top" alt=""></a>
+					<div class="card-body">
+						<h5 class="card-title">{{product}}</h5>
+						<hr />
+						<div class="d-flex">
+							<button class="addCart btn btn-outline-success" id="addCart{{product.id}} " data-catid="{{product.id}}" href="#">Add To Cart</button>
+							<button id="eliminateWish" href="#" data-catid="{{product.id}}" class="eliminateWish btn btn-primary">Eliminate</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>	
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+	$('.addCart').click(function () {
+		var catid = $(this).attr("data-catid");
+		$.ajax({
+			type: 'GET',
+			url: "/add_cart/".concat(catid),
+			data: {
+				product_id: catid
+			},
+			success: function (data) {
+				$('#total').replaceWith(data.total_price);
+				$('#num_carts').replaceWith(data.num_carts);
+			}
+		})
+	});
+	$('.eliminateWish').click(function(){
+		var catid = $(this).attr("data-catid");
+		$.ajax({
+			type:'GET',
+			url: "/eliminate_wish/".concat(catid),
+			data: {
+				product_id: catid
+			},
+			success:function(data){
+				$('#num_wishes').replaceWith(data.num_wishes);
+				$('#myWish-'.concat(catid)).replaceWith("");
+			}
+		}) 
+	});
+</script>
+{% endblock script %}

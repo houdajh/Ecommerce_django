@@ -1,0 +1,8 @@
+{% load static %}
+
+<!-- Top-NavBar -->
+{% if user.is_authenticated %}
+{% include "includes/top_navbar.html" %}
+{% else %}
+{% include "includes/tp.html" %}
+{% endif %}

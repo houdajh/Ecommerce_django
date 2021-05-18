@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_navbar %}
+{% include "includes/top_navbar.html" %}
+{% endblock main_navbar %}
+
+{% block style %}
+<style>
+   .settings{
+       margin-left:400px;
+       margin-right:400px;
+   }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="col-md-9 settings">
+    <div class="tab-content">
+        <div class="tab-pane fade active show" id="account-general">
+
+            
+            <hr class="border-light m-0">
+
+            <div class="card-body">
+                <div class="form-group">
+                  <form method="POST" action="" novalidate>
+					{% csrf_token %}
+					{% include "includes/form.html" %}
+					<div class="d-flex justify-content-center mt-3 login_container">
+						<input class="btn login_btn" type="submit" value="Login">
+					</div>
+				</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+{% endblock %}
+
+{% block script %}
+<script src="#" type="text/javascript"></script>
+{% endblock script %}
