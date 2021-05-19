@@ -93,5 +93,16 @@ def delete_seller_view(request, pk):
 # admin view the feedback
 #@login_required(login_url='login')
 def view_feedback_view(request):
-    feedbacks=Feedback.objects.all().order_by('-id')
+    feedbacks=ContactUs.objects.all().order_by('-id')
     return render(request,'dashboard_admin/view_feedback.html',{'feedbacks':feedbacks})
+
+
+
+# @login_required(login_url='login')
+def delete_feedback_view(request, pk):
+    feed = models.ContactUs.objects.get(id=pk)
+    feed.delete()
+    return redirect('view_feedback')
+
+
+   

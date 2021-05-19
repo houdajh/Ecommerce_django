@@ -63,6 +63,7 @@ def home(request):
     if request.user.groups.filter(name='SELLER'):
         group = 'SELLER'
     myFilter =Product.objects.all()  
+    product_obj_page=Product.objects.all() 
     if request.method == 'GET':
         myFilter = ProductFilter(request.GET, queryset=products)
         products_9 = myFilter.qs.order_by('-rates')[:9]

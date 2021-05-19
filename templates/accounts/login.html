@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
+    
+
 
     <style>
 	
@@ -123,26 +125,9 @@ button{
   color: #ffad59;
 }
 
-.social-media{
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
 
-.social-media ul{
-  list-style: none;
-}
 
-.social-media ul li{
-  display: inline-block;
-  cursor: pointer;
-  margin: 25px 15px;
-}
 
-.social-media img{
-  width: 40px;
-  height: 40px;
-}
 
 .sub-cont{
   overflow: hidden;
@@ -268,9 +253,7 @@ button{
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	transition: .3s;
-	-webkit-transform: rotateY(40deg);
-	-moz-transform: rotateY(40deg);
-	transform: rotateY(40deg);
+	
 }
 .login:hover {
 	-webkit-transform: rotate(0);
@@ -282,9 +265,14 @@ button{
           transform:translateY(0);
 }
 
+.input-group-text{
+  z-index:100;
+}
+
 
 
     </style>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
 
@@ -293,28 +281,18 @@ button{
 					<section id="inner-wrapper " class="login ">
 					<div class="cont">
     <div class="form sign-in">
-	<!--<form method="POST" action="" novalidate>
-      <h2>Sign In</h2>
-      {% csrf_token%}
-	{% include "includes/form.html" %}
-	<div class="d-flex justify-content-center mt-3 login_container">
-		<input class="btn login_btn submit text-white" type="submit" value="Sign In">
-	  </div>
-	  
-      <p class="forgot-pass">Forgot Password ?</p>
-</form>
--->
+	
 <form method="POST" action="">
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <span class="input-group-text"><img src="https://img.pngio.com/username-icon-with-png-and-vector-format-for-free-unlimited-username-png-512_512.png" style="width:20px ; height:20px;"></i></span>
                             </div>
                             <input type="text" name="username" placeholder="Username..." class="form-control">
                         </div>
                         <div class="input-group mb-2">
                             <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                <span class="input-group-text "><img src=" https://freepngimg.com/thumb/lock_keys_facts/10-2-key-png-file.png" style="width:20px ; height:20px;"></i></span>
                             </div>
                             <input type="password" name="password" placeholder="Password..." class="form-control">
                         </div>
@@ -322,14 +300,7 @@ button{
 		<input class="btn login_btn submit text-white" type="submit" value="Sign In">
 	  </div>
                     </form>
-      <div class="social-media">
-        <ul>
-          <li><img src="../static/images/facebook.png"></li>
-          <li><img src="../static/images/twitter.png"></li>
-          <li><img src="../static/images/linkedin.png"></li>
-          <li><img src="../static/images/instagram.png"></li>
-        </ul>
-      </div>
+      <a class="navbar-brand" ><img src="../static/images/logo_white.png"></a>
     </div>
 
     <div class="sub-cont">

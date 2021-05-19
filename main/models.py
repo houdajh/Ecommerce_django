@@ -31,6 +31,13 @@ COLORS = (
     ('RED', 'RED'),
     ('BLUE', 'BLUE'),
     ('BLACK', 'BLACK'),
+    ('ORANGE', 'ORANGE'),
+    ('PINK', 'PINK'),
+    ('PURPLE', 'PURPLE'),
+    ('GREEN', 'GREEN'),
+    ('YELLOW', 'YELLOW'),
+    ('GRAY', 'GRAY'),
+    ('WHITE', 'WHITE'),
 )
 category=(
     ('Vetement','Vetement'),
@@ -47,6 +54,7 @@ class ContactUs(models.Model):
     email=models.EmailField(max_length=100)
     subject=models.CharField(max_length=100)
     message=models.TextField(max_length=500)
+    date= models.DateField(auto_now_add=True,null=True)
 
     def __str__(self):
         return self.name
@@ -139,11 +147,4 @@ class ProductsFeedBacks(models.Model):
     def __str__(self):
         return self.product.name
 
-class Feedback(models.Model):
-    name=models.CharField(max_length=40)
-    feedback=models.CharField(max_length=500)
-    date= models.DateField(auto_now_add=True,null=True)
-    
-    def __str__(self):
-        return self.name
 

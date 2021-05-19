@@ -32,6 +32,7 @@
     }
   </style>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 </head>
 
@@ -42,9 +43,11 @@
 <hr>
 {%for f in feedbacks%}
 <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>{{f.date}} ||By : {{f.name}} </strong><br> {{f.feedback}}
+  <span class="closebtn" onclick="this.parentElement.style.display='none'; ">&times;</span>
+  <strong>{{f.date}} ||By : {{f.name}} ||Email : {{f.email}} </strong><br> {{f.subject}} <br> {{f.message}}
 </div>
 {%endfor%}
+
+
 
 {% endblock content %}

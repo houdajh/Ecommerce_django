@@ -11,6 +11,7 @@ urlpatterns = [
     
     path('admin_view_booking/', admin_view_booking_view, name='admin_view_booking'),
     path('view_feedback/', view_feedback_view, name='view_feedback'),
+    path('delete_feedback/<int:pk>', delete_feedback_view, name='delete_feedback'),
     
 
     path('admin_sellers/', admin_sellers_view, name='admin_sellers'),

@@ -49,26 +49,7 @@
           text-decoration: none;
         }
 
-        .fa-facebook {
-          background: #3B5998;
-          color: white;
-          margin-top: 30px;
-        }
-
-        .fa-whatsapp {
-          background: #25d366;
-          color: white;
-        }
-
-        .fa-twitter {
-          background: #55ACEE;
-          color: white;
-        }
-
-        .fa-instagram {
-          background: #125688;
-          color: white;
-        }
+        
 
         p {
           text-align: center;
@@ -196,6 +177,7 @@ body{
  /* Mise en forme */
  width: 100%; /* <-- Largeur de votre site */
  }
+ 
 </style>
 
 
@@ -227,11 +209,17 @@ body{
                <li class="nav-item">
                 <a class="nav-link" href="{% url 'view_feedback' %}">Feedback</a>
               </li>
-              <div class="navbar-nav navbar-right">
-          <a href="{% url 'logout' %}" class="nav-item nav-link">LOGOUT</a>
-        </div>
+              
 
               </div>
+              <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">LOGOUT</a>
+            </li>
+            
+        </ul>
+    </div>
               
 
       </nav>
