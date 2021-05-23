@@ -15,14 +15,14 @@ USERS = (
 class CreateUserForm(UserCreationForm):
     choice = forms.ChoiceField(
         label="Enter Your Choice", choices=USERS, required=True)
-    mobile = PhoneNumberField().formfield(required=True)
+    
     address = forms.CharField(required=True)
-    country= CountryField().formfield(required=True)
+    
  
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'choice','mobile','address','country']
+        fields = ['username', 'email', 'password1', 'password2', 'choice','address']
 
 class SettingsForm(UserCreationForm):
     choice = forms.ChoiceField(

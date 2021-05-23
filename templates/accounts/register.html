@@ -36,11 +36,11 @@ input, button{
 }
 
 .cont{
-  overflow-y: scroll;
+  
   overflow-x: hidden;
   position: relative;
   width: 900px;
-  height: 550px;
+  height: 660px;
   background: #fff;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
@@ -55,7 +55,7 @@ input, button{
 
 h2{
   width: 100%;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -110,26 +110,7 @@ button{
 
 
 
-.social-media{
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-}
 
-.social-media ul{
-  list-style: none;
-}
-
-.social-media ul li{
-  display: inline-block;
-  cursor: pointer;
-  margin: 25px 15px;
-}
-
-.social-media img{
-  width: 40px;
-  height: 40px;
-}
 
 .sub-cont{
   overflow: hidden;
@@ -166,9 +147,9 @@ button{
   position: absolute;
   right: 0;
   top: 0;
-  width: 700px;
+  width: 900px;
   height: 100%;
-  background-image: url(../static/images/background3.jpg);
+  background-image: url(../static/images/background3_900x550.jpg);
   background-size: cover;
   transition: -webkit-transform 1.2s ease-in-out;
   transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
@@ -202,7 +183,7 @@ button{
 
 
 .img-text p{
-  font-size: 14px;
+  font-size: 20px;
   line-height: 1.5;
 }
 
@@ -255,9 +236,7 @@ button{
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	transition: .3s;
-	-webkit-transform: rotateY(40deg);
-	-moz-transform: rotateY(40deg);
-	transform: rotateY(40deg);
+
 }
 .login:hover {
 	-webkit-transform: rotate(0);
@@ -277,20 +256,24 @@ button{
 					
 	<form method="POST" action="" novalidate>
     <section id="inner-wrapper " class="login ">
+    
 					<div class="cont">
     <div class="form sign-in">
+    
       <h2>Sign Up</h2>
       {% csrf_token%}
 	{% include "includes/form.html" %}
 	<div class="d-flex justify-content-center mt-3 login_container">
 		<input class="btn login_btn submit text-white" type="submit" value="Sign In">
 	  </div>
+    
     </div>
 
     <div class="sub-cont">
       <div class="img">
         <div class="img-text m-in">
           <h2>One of us?</h2>
+          <br> <br> 
           <p>If you already has an account, just sign in. We've missed you!</p>
         </div>
 		<a href="{% url 'login' %}" class="ml-2">
@@ -300,6 +283,7 @@ button{
         </div>
 		
       </div>
+      
 	  </a>
       
 	  </section>

@@ -593,7 +593,7 @@ textarea.input1 + .shadow-input1 {
                 <button class="botona"><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt text-white"><br>Sign-In<span ></i></span></a></button>
                 {% endif %}
             </div>
-              
+       
               
 			  </div>
             </div>
@@ -603,7 +603,7 @@ textarea.input1 + .shadow-input1 {
 				<img src="https://image.freepik.com/photos-gratuite/deux-belles-femmes-shopping-ville_1303-16426.jpg"
 					class="d-block w-100 img1" alt="...">
 					 <div class="container">
-            <div class="carousel-caption">
+           <div class="carousel-caption">
               <div class="header-box">
               <h3 class="tit">
                 DigiShop for happy shopping
@@ -611,23 +611,21 @@ textarea.input1 + .shadow-input1 {
               <h3 class="title2">
                Welcome to you in our digital shop
               </h3>
-			  <div class="d-flex">
+			 <div class="d-flex">
                 
                 {% if user.is_authenticated %}
                 {% else %}
-                <div class="position">
-                <button class="botona "><a href="{% url 'register' %}"><i class="far fa-user text-white "><br>Register<span></i></span></a></button>
+                <button class="botona "><a href="{% url 'register' %}"><i class="far fa-user text-white"><br>Register<span  ></i></span></a></button>
 							<br> <br> <br>
                 <button class="botona"><a href="{% url 'login' %}"><i class="fas fa-sign-in-alt text-white"><br>Sign-In<span ></i></span></a></button>
-               </div>
                 {% endif %}
             </div>
+              
               
 			  </div>
             </div>
           </div>
 			</div>
-		</div>
 		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
 			data-bs-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
