@@ -4,9 +4,13 @@
 
 {% if group == 'SELLER' %}
 	{% include "dashboard_seller/home.html" %}
+{% elif group == 'ADMIN' %}
+  
+    {% include "dashboard_admin/admin_dashboard.html" %}
 {% else %}
 	{% include "includes/navbar.html" %}
 {% endif %}
+
 
 {% endblock main_navbar %}
 
@@ -698,7 +702,7 @@ textarea.input1 + .shadow-input1 {
 						<p class="card-text">{{product.description}}</p>
 						<p class="card-text">Price : {{product.price}}€</p>
 						<div class="d-flex">
-                <button  id="addCart" class="btn btn-secondary me-2 " data-product="{{product.id}}" data-action="add" href="#">Add To Cart</button>
+                <button  id="addCart" class="btn btn-secondary me-2 " onclick="window.location.reload()" data-product="{{product.id}}" data-action="add" href="#">Add To Cart</button>
 							<button id="addWishlist" data-catid="{{product.id}}" class="addWishlist btn btn-outline-success" href="#">Add To WishList</button>
 						</div>
 					</div>
@@ -718,7 +722,7 @@ textarea.input1 + .shadow-input1 {
        </div>
       <div class="pag1">
       {% if product_obj_page.has_next %}
-      <a class="pag1" href="?page={{product_obj_page.next_page_number}}"> Next</a>
+      <a class="pag1" href="?page={{product_obj_page.next_page_number}}" target="self"> Next</a>
       <a class="pag1" href="?page={{product_obj_page.paginator.num_pages}}">Last &raquo;</a>
       {% endif %}
       </div>
