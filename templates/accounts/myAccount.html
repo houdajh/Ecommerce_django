@@ -15,20 +15,22 @@
 {% endblock style %}
 
 {% block content %}
+<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
 <div class="col-md-9 settings">
     <div class="tab-content">
         <div class="tab-pane fade active show" id="account-general">
 
-            
+               <h2>Check Your information </h2>
             <hr class="border-light m-0">
-
+     
             <div class="card-body">
                 <div class="form-group">
                   <form method="POST" action="" novalidate>
 					{% csrf_token %}
 					{% include "includes/form.html" %}
 					<div class="d-flex justify-content-center mt-3 login_container">
-						<input class="btn login_btn" type="submit" value="Login">
+						<input class="btn btn-info" type="submit" value="Change Information">
 					</div>
 				</form>
                 </div>

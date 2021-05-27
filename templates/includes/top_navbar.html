@@ -1,75 +1,11 @@
+{% load static%}
 <style>
 
-* {
-    box-sizing: border-box;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-  
-  
-  
-}
 
 
-.navbar {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffad57;
-    color: white;
-}
-
-.brand-title {
-    font-size: 1.5rem;
-    margin: .5rem;
-}
-
-.navbar-links {
-    height: 100%;
-}
-
-.navbar-links ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-links li {
-    list-style: none;
-}
-
-.navbar-links li a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: 1rem;
-}
-
-.navbar-links li:hover {
-    background-color: #ffad57;
-}
 
 
-.toggle-button {
-    position: absolute;
-    top: .75rem;
-    right: 1rem;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-}
 
-.toggle-button .bar {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-}
 
 @media (max-width: 800px) {
     .navbar {
@@ -199,13 +135,22 @@ body{
  /* Mise en forme */
  width: 100%; /* <-- Largeur de votre site */
  }
+ #navigation{
+ margin-bottom:100px;
+ }
+ .navv{
+     padding-bottom:100px;
+ }
+ .header-nav{
+      margin-bottom:100px;
+ }
 </style>
 
 
-  <header class="" id='navigation'>
-      <nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
-        <div class="container">
-          <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/logo_BLACK.png"></a>
+  <header class="haeder-nav" id='navigation'>
+      <nav class="navbar navbar-expand-lg  navbar-dark bg-dark  navv">
+        <div class="container cla">
+          <a class="navbar-brand" href="{% url 'home' %}"><img src={% static "images/logo_BLACK.png" %}></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -225,7 +170,7 @@ body{
               <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact Us</a>
               </li>
-                {% if group == 'CLIENT' %}
+                
                  <li class="nav-item">
                          
                          
@@ -258,15 +203,18 @@ body{
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="{% url 'view_account' %}">My Account</a></li>
-                        <li><a class="dropdown-item" href="{% url 'password_reset' %}">Forget Password</a></li>
-                        <li>
+                        <li><a class="dropdown-item" href="{% url  'change_passwordClient' %}">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{% url  'delete_account_client' %}">Delete Account</a></li>
+                        
+        
+                                        
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                     </ul>
                 </div>
                 </li>
-                    {% endif %}
+                   
                     
     </div>
       </nav>

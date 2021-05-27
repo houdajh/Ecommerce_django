@@ -55,6 +55,7 @@ def login(request):
 
 
 @login_required
+@allowed_users(allowed_roles=[ 'CLIENT'])
 def view_account(request):
     userform = User.objects.get(id=request.user.id)
     form = SettingsForm(instance=userform)
@@ -72,6 +73,7 @@ def view_account(request):
 
 
 @login_required
+@allowed_users(allowed_roles=[ 'CLIENT'])
 def edit_account(request):
     if request.method == 'POST':
         form = UserChangeForm(request.POST, instance=request.user)
@@ -82,6 +84,7 @@ def edit_account(request):
 
 
 @login_required
+@allowed_users(allowed_roles=[ 'CLIENT'])
 def password_reset_request(request):
     if request.method == "POST":
         password_reset_form = PasswordResetForm(request.POST)
@@ -112,6 +115,7 @@ def password_reset_request(request):
     return render(request=request, template_name="accounts/password_reset/password_reset.html", context={"password_reset_form": password_reset_form})
 
 @login_required
+@allowed_users(allowed_roles=[ 'CLIENT'])
 def delete_account_client(request):
     user=request.user
     if request.method == "POST":

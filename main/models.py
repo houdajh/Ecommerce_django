@@ -128,7 +128,6 @@ class Checkout(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     adress_1 = models.CharField(max_length=100)
     adress_2 = models.CharField(max_length=100, blank=True)
-    country = CountryField(multiple=False)
     zip_code = models.CharField(max_length=100)
 
 class Order(models.Model):

@@ -27,14 +27,14 @@ class CreateUserForm(UserCreationForm):
 class SettingsForm(UserCreationForm):
     choice = forms.ChoiceField(
         label="Enter Your Choice", choices=USERS, required=True)
-    mobile = PhoneNumberField().formfield(required=True)
+   
     address = forms.CharField(required=True)
-    country= CountryField().formfield(required=True)
+  
  
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'choice','mobile','address','country']
+        fields = ['username', 'email', 'choice','address']
 
 class UserForgotPasswordForm(PasswordResetForm):
     email = forms.EmailField(required=True, max_length=254)

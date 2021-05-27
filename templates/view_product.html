@@ -1,46 +1,29 @@
-{% extends 'base.html'%}
-
-{% block title %}
-{{product.name}}
-{% endblock title %}
-
-{% block style %}
+{% extends "base.html" %}
+{% load static %}
 
 
-{% endblock style %}
 
-{% block main_navbar %}{% include "includes/top_navbar.html" %}{% endblock main_navbar %}
+
+
+{% block main_navbar %}
+{% include "includes/top_navbar.html" %}
+{% endblock main_navbar %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/stylecheckout.css' %}">
+{% block title %}Home{% endblock title %}
 
 {% block content %}
 
 
 <!------ Include the above in your HEAD tag ---------->
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    
-</head>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 
-body{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.5;
-    
-}
 
 .card-wrapper1{
+    margin-top:100px;
     max-width: 1100px;
     margin: 0 auto;
     margin-top:100px;
@@ -217,97 +200,9 @@ img{
 }
     </style>
     
-<body>
 
-{% comment %} 
-        100% {
-            opacity: 1;
-            -webkit-transform: scale(1);
-            transform: scale(1);
-        }
-    }
+<br/><br/><br/><br/><br/><br/>
 
-    /*# sourceMappingURL=style.css.map */
-
-    <div class="container">
-        <div class="card1">
-            <div class="container-fliud">
-                <div class="wrapper row">
-                    <div class="preview col-md-6">
-                        <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img  src="{{product.photo.url}}" /></div>
-                        </div>
-                    </div>
-                    <div class="details col-md-6">
-                        <h3 class="product-title">{{product.name}}</h3>
-                        <div class="rating">
-                            {% if rate_avg == 1 %}
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            {% elif rate_avg == 2 %}
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            {% elif rate_avg == 3 %}
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            {% elif rate_avg == 4 %}
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star"></i>
-                            {% elif rate_avg == 5 %}
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            {% else %}
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            {% endif %}
-                            {{real_rate}}%
-                            <form action="{% url 'unrated' product.id %}" method="POST" novalidate>
-                                {% csrf_token %}
-                                <button type="submit" class=" s1 dislike"><i
-                                        class="bi bi-hand-thumbs-down-fill"></i></button>
-                            </form>
-                            <form action="{% url 'rated' product.id %}" method="POST" novalidate>
-                                {% csrf_token %}
-                                <button type="submit" class="s1 like"><i class="bi bi-hand-thumbs-up-fill"></i></button>
-                            </form>
-                            <span class="review-no">41 reviews</span>
-                        </div>
-                        <p><strong>Category :</strong>{{product.category}}</p>
-                        <p class="product-description">{{product.description}}</p>
-                        <h4 class="price">current price: <span>{{product.price}}</span></h4>
-                        <p class="vote"><strong>{{real_rate}}%</strong> of buyers enjoyed this product! <strong>({{all_rates}} votes)</strong>
-                        </p>
-                        <div class="action">
-                            <button class="addCart btn btn-outline-success" id="addCart{{product.id}}"
-									data-catid="{{product.id}}" href="#">Add To Cart</button>
-                            <button id="addWishlist{{product.id}}" data-catid="{{product.id}}"
-                                class="addWishlist btn btn-outline-success" href="#">Add To WishList</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     {% endcomment %}
-     
   
     <div class = "card-wrapper1">
       <div class = "card1">
@@ -427,8 +322,7 @@ img{
 </div>
 </div>
  </div>
- </body>
-
+ 
 {% endblock content %}
 
 {% block script %}

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block mainNavBar %}
+
+
+{% block main_navbar %}
 {% include "includes/top_navbar.html" %}
-{% endblock mainNavBar %}
+{% endblock main_navbar %}
 
-{% block title %}Delete account{% endblock %}
-
-
+{% block title %}settings{% endblock title %}
 
 {% block content %}
 <style>
@@ -14,7 +14,6 @@
     margin:150px;
 }
 </style>
-<br/><br/><br/><br/><br/><br/>
 <div class="row ">
 	<div class="col-md-6">
 		<div class=" delete">
@@ -24,7 +23,7 @@
             <br/><br/><br/><br/>
 
 
-			<form action="{% url 'delete_account'  %}" method="POST">
+			<form action="{% url 'delete_account11'  %}" method="POST">
 				
 				{% csrf_token %}
 				<a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>

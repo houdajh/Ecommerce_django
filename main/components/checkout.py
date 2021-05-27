@@ -18,18 +18,21 @@ def checkout(request):
             total_price += cart.cart_total_price()
         if request.method == 'POST':
             form = CheckoutForm(request.POST)
-            
+            print("byyyy")
+           
+           
             if form.is_valid():
+                print("hiii")
                 adress1 = form.cleaned_data.get('adress_1')
                 adress2 = form.cleaned_data.get('adress_2')
                 zipcode = form.cleaned_data.get('zip_code')
-                countryy = form.cleaned_data.get('country') 
+                
                 checkoutadress = Checkout.objects.create(
                     user = request.user,
                     adress_1 = adress1,
                     adress_2 = adress2,
                     zip_code = zipcode,
-                    country = countryy
+                   
                 )
                 order = Order.objects.create(user= request.user, checkout_adress= checkoutadress,status= 'Payed')
                 order.save()

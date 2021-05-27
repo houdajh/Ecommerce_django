@@ -655,15 +655,14 @@ textarea.input1 + .shadow-input1 {
           <div class="col-md-6">
             <div class="left-content">
               <h4>Looking for the best products?</h4>
-              <p class="text"><a rel="nofollow" href="../static/images/background3.jpg" target="_parent">This template</a> is free to use for your business websites. However, you have no permission to redistribute the downloadable ZIP file on any template collection website. <a rel="nofollow" href="https://templatemo.com/contact">Contact us</a> for more info.</p>
+              <p class="text"><a rel="nofollow" href="../static/images/background3.jpg" target="_parent">DIGI Shop</a> is an online sales platform that measures to offer quality experiences to site visitors and facilitate the sales process to customers and sellers. </p>
               <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-                <li><a href="#">Non cum id reprehenderit</a></li>
+                <li><a href="#">Make it easier to find products</a></li>
+                <li><a href="#">Customer evaluation of products</a></li>
+                <li><a href="#">facilitate the sales process</a></li>
+              
               </ul>
-              <a href="about.html" class="filled-button">Read More</a>
+            
             </div>
           </div>
           <div class="col-md-6">
@@ -723,7 +722,7 @@ textarea.input1 + .shadow-input1 {
        </div>
       <div class="pag1">
       {% if product_obj_page.has_next %}
-      <a class="pag1" href="?page={{product_obj_page.next_page_number}}" target="self"> Next</a>
+      <a class="pag1" href="?page={{product_obj_page.next_page_number}}"  class="next"> Next</a>
       <a class="pag1" href="?page={{product_obj_page.paginator.num_pages}}">Last &raquo;</a>
       {% endif %}
       </div>
@@ -739,7 +738,7 @@ textarea.input1 + .shadow-input1 {
 	<div class="row">
 		<div class="col span_1_of_3 testimonial-box">
 			<blockquote>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+				DIGI Shop help us to focus on products.
 			</blockquote>
 			<cite><img src="../static/images/client-1.jpg" alt="Arron Cruz">Arron Cruz</cite>
 		</div>
@@ -767,9 +766,9 @@ textarea.input1 + .shadow-input1 {
 
 				<form method="post" id="task-form" class="contact1-form validate-form">
 			      {% csrf_token %}
-				<span class="contact1-form-title">
+				<h4 class="contact1-form-title">
 					Get in touch
-				</span>
+				</h4>
 
 				<div class="wrap-input1 validate-input" data-validate = "Name is required">
 				  {{form.name}}
@@ -854,6 +853,15 @@ $('.addWishlist').click(function () {
 			success: function (data) {
 				$('#num_wishes').replaceWith(data.num_wishes);
 			},
+		})
+	});
+  $('.next').click(function () {
+	  
+		$.ajax({
+			type: '',
+			url: "?page={{product_obj_page.next_page_number}}",
+			
+			
 		})
 	});
 

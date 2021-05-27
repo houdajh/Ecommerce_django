@@ -12,72 +12,231 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="card my-4 p-3">
+<style>
+.checkout1{
+   
+    margin-left:5.0%;
+}
+.title1{
+  
+  font-size: 35px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 70px;
+  color: #fff;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
+  background: linear-gradient(-135deg, #f5d695, #61bcd9);
+}
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Ubuntu');
 
-            <form method="POST" class="form-card">
-            {% csrf_token %}
-                 <div class="row">
-                    <div class="col-12">
-                        <div class="form-group"> 
-                        <input type="text" class="form-control p-0" id="number" required value="{{ user.username }}" >
-                        </div>
-                    </div>
-                </div>
-                 <div class="row">
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+}
 
-                    <div class="col-12">
-                        <div class="form-group"> 
-                        <input type="text" class="form-control p-0" id="number" required value=" {{ user.email }}">
-                        </div>
-                    </div>
-                </div>
-                      <div class="col-12">
-                        <div class="form-group"> 
-                        {{ form.adress_1 }}
-                        <label class="form-control-placeholder p-0" for="passw">Adress 1 </label>
-                         </div>
-                    </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group"> 
-                        {{ form.adress_2 }}
-                        <label class="form-control-placeholder p-0" for="name">Adress 2 (optional)</label> </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-12">
-                        <div class="form-group">
-                         {{ form.country }}
-                        <!--<label class="form-control-placeholder p-0" for="expdate">Country</label>-->
-                         </div>
-                    </div>
-                    <div class="col-sm-4 col-12">
-                        <div class="form-group"> 
-                        {{ form.zip_code }}
-                        <label class="form-control-placeholder p-0" for="passw">Zip</label>
-                         </div>
-                    </div>
-                  <h3>Payment option</h3>
-              <div class="d-block my-3">
-                {% for value, name in form.fields.payment_option.choices %}
+.wrapper{
+  background: #fff;
+  margin: 0 10px;
+ 
+}
+
+.payment{
+  background: #F9E6BF;
+  max-width: 500px;
+  margin: 80px auto;
+  height: auto;
+  padding: 35px;
+  padding-top: 70px;
+  border-radius: 5px;
+  position: relative;
+   border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+  
+}
+
+
+.payment h2{
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  color: #0d3c61;
+}
+
+.form .label22{
+  display: block;
+  color: #555555;
+  margin-bottom: 6px;
+}
+
+.input12{
+  padding: 13px 0px 13px 25px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #dddddd;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  outline: none;
+  font-size: 16px;
+  color: #555555;
+}
+
+.card-grp{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-item{
+  width: 48%;
+}
+
+.space{
+  margin-bottom: 20px;
+}
+
+.icon-relative{
+  position: relative;
+}
+
+.icon-relative .fas,
+.icon-relative .far{
+  position: absolute;
+  bottom: 12px;
+  left: 15px;
+  font-size: 20px;
+  color: #555555;
+}
+
+.btn{
+  margin-top: 40px;
+  background: #61bcd9;
+  padding: 12px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.payment-logo{
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  background: #f8f8f8;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 85px;
+ 
+}
+
+.payment-logo:before{
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 90px;
+  height: 90px;
+  background: #61bcd9;
+  border-radius: 50%;
+}
+
+.payment-logo p{
+  position: relative;
+  color: #f8f8f8;
+  font-family: 'Baloo Bhaijaan', cursive;
+  font-size: 58px;
+}
+
+
+@media screen and (max-width: 420px){
+  .card-grp{
+    flex-direction: column;
+  }
+  .card-item{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .btn{
+    margin-top: 20px;
+  }
+}
+.texttt{
+    color:#fff;
+}
+
+</style>
+<div class="wrapper">
+ <br/><br/><br/><br/><br/><br/>
+         
+  <div class="payment">
+    <div class="payment-logo">
+      
+      <p>p</p>
+    </div>
+    
+ 
+    <h2>Payment Gateway</h2>
+    <form method="POST" class="form">
+    {% csrf_token %}
+      <div class="card22 space icon-relative">
+        <label class="label22">Card holder:</label>
+        <input type="text" class="input12"  required value="{{ user.username }}">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="card22 space icon-relative">
+        <label class="label22">Email:</label>
+        <input type="text" class="input12"  required value="{{ user.email }}">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="card22 space icon-relative">
+        <label class="label22 form-control-placeholder p-0">Address:</label>
+        {{ form.adress_1 }}
+        
+       <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="card22 space icon-relative">
+        <label class="label22 form-control-placeholder p-0">Address(optional):</label>
+         {{ form.adress_2 }}
+       <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="card22 space icon-relative">
+        <label class="label22 form-control-placeholder p-0">Card number:</label>
+      {{ form.zip_code }}
+        <i class="far fa-credit-card"></i>
+      </div>
+     
+        <div class="card-item icon-relative">
+          <label class="label22">Payment mode:</label>
+          {% for value, name in form.fields.payment_option.choices %}
                 <div class="custom-control custom-radio">
                   <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" required>
                   <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
                 </div>
                 {% endfor %}
-              </div>
-                <div class="d-flex align-items-center flex-fill my-1" id="total">
-                    <p class="pt-2">Total:</p>
-                    <input type="text" class="form-control" id="totalapayer" value="{{total_price}}">
-                </div>
-                <div class="d-flex justify-content-between text-center mt-4" id="btns">
-                    <button href="#" type="button" id="btn" class="btn-block pr-6"><a href="{% url 'cart' %}" class="btn btn-outline-success">Back To Your Cart</a></button> 
-                    <button type="submit" class="btn btn-primary btn-block" id="btn">Pay</button>
-                </div>
-            </form>
         </div>
+        <br/><br/>
+        <div class="card22 space icon-relative">
+        <label class="label22">    Your total purchase  :  {{total_price}}</label>
+     
+        
+      </div>
+         <div class="d-flex justify-content-between text-center mt-4" >
+                    <button href="#" type="button" id="btn" class="btn tt "><a href="{% url 'cart' %}" class="texttt" >Back To Your Cart</a></button> 
+                    <button type="submit" class="btn" id="btn">Pay</button>
+                </div> 
+      </form>
+        
+     
+      
     </div>
+  </div>
 </div>
 {% endif %}
 {% endblock content %}

@@ -38,12 +38,8 @@ class CheckoutForm(forms.Form):
     adress_2 = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control p-0'
     }))
-    country = CountryField(blank_label='(select country)').formfield(
-        required=False,
-        widget=CountrySelectWidget(attrs={
-            'class': 'custom-select d-block w-100',
-        })
-    )
+    
+    
     zip_code = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'form-control'

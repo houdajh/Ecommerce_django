@@ -1,12 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="../static/home/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="../static/home/assets/css/templatemo-sixteen.css">
-    <link rel="stylesheet" href="../static/home/assets/css/owl.css">
+      
+   <link href={% static 'home/assets/css/fontawesome.css' %} rel="stylesheet" />
+    <link href={% static 'home/assets/css/templatemo-sixteen.css' %} rel="stylesheet" />
 
     {% block head %}
         {% include 'static/css.html' %}
@@ -44,16 +45,10 @@
     {% block script %}{% endblock script %}
     {% include 'static/js.html' %}
 </body>
-<script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 
     <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/isotope.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+   
 
 </html>
