@@ -674,17 +674,6 @@ textarea.input1 + .shadow-input1 {
       </div>
     </div>
 
-
-<!-- Filter Form -->
-<div class="best-features">
-      <div class="container">
-	   <div class="section-heading">
-              <h2 id ="product"><br><br><br><br>Search for your product</h2>
-            </div>
-{% include 'includes/filter_form.html' %}
-</div>
-</div>
-
 <!-- Products -->
 <div class="d-flex" id="products">
 	<div class="container">
@@ -713,7 +702,7 @@ textarea.input1 + .shadow-input1 {
       <div class="pag1">
       {% if product_obj_page.has_previous %}
       <a href="?page=1">&laquo; First</a>
-      <a href="?page={{product_obj_page.previous_page_number}}"> Previous</a>
+      <a href="?page={{product_obj_page.previous_page_number}}" target="self"/> Previous</a>
       </div>
       {% endif %}
       
@@ -722,8 +711,8 @@ textarea.input1 + .shadow-input1 {
        </div>
       <div class="pag1">
       {% if product_obj_page.has_next %}
-      <a class="pag1" href="?page={{product_obj_page.next_page_number}}"  class="next"> Next</a>
-      <a class="pag1" href="?page={{product_obj_page.paginator.num_pages}}">Last &raquo;</a>
+      <a class="pag1"  href="" id="next"> Next</a>
+      <a class="pag1"   href="?page={{product_obj_page.paginator.num_pages}}" target="self">Last &raquo;</a>
       {% endif %}
       </div>
       </div>
@@ -855,16 +844,7 @@ $('.addWishlist').click(function () {
 			},
 		})
 	});
-  $('.next').click(function () {
-	  
-		$.ajax({
-			type: '',
-			url: "?page={{product_obj_page.next_page_number}}",
-			
-			
-		})
-	});
-
+ 
 </script>
 
 {% endblock script %}
