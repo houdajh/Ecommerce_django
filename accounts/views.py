@@ -17,12 +17,14 @@ from .forms import CreateUserForm
 from main.models import WishlistProduct, Cart
 from .decorators import unauthenticated_user, allowed_users
 
+#inscription d'un nouveau utilsateur 
 
-@unauthenticated_user
+@unauthenticated_user               #condition d'authentification
 def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
+        #tester la validite des champs
         if form.is_valid():
             user = form.save()
             userType = form.cleaned_data.get('choice')
@@ -33,7 +35,7 @@ def register(request):
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
-
+#connexion au compte en fournirant email et mot de passe
 @unauthenticated_user
 def login(request):
     if request.method == 'POST':
@@ -48,7 +50,7 @@ def login(request):
     context = {}
     return render(request, 'accounts/login.html', context)
 
-
+#afficher les informations relatif a un compte 
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def view_account(request):
@@ -66,7 +68,7 @@ def view_account(request):
     return render(request, 'accounts/myAccount.html',context)
 
 
-
+#modifier les informations d'un compte 
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def edit_account(request):
@@ -109,6 +111,7 @@ def password_reset_request(request):
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="accounts/password_reset/password_reset.html", context={"password_reset_form": password_reset_form})
 
+#supprimer compte client
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def delete_account_client(request):

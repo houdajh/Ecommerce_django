@@ -2,7 +2,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
 
-
+#on cree les vues du dashboard seller 
 urlpatterns = [
     path('dashboard_seller/', views.show_dashboard, name='dashboard_seller'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
