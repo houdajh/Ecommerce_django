@@ -5,12 +5,16 @@
 {% block content %}
 <style>
 .cont{
-	margin-top:200px;
-	margin-bottom:100px;
+	
 }
 </style>
+
+ 
 <div class="d-flex">
+
 	<div class="container">
+	<br>
+	<h2 id ="product"><br><br><br><br>Check your wishlist</h2><br>
 		<div class="row cont">
 			{% for product in products %}
 			<div id="myWish-{{product.id}}"  class="col-lg-4">
@@ -20,14 +24,16 @@
 						<h5 class="card-title">{{product}}</h5>
 						<hr />
 						<div class="d-flex">
-							<button class="addCart btn btn-outline-success" id="addCart{{product.id}} " data-catid="{{product.id}}" href="#">Add To Cart</button>
-							<button id="eliminateWish" href="#" data-catid="{{product.id}}" class="eliminateWish btn btn-primary">Eliminate</button>
+							<button class="addCart btn btn-outline-secondary" id="addCart{{product.id}} " data-catid="{{product.id}}" href="#">Add To Cart</button>
+							<button id="eliminateWish" href="#" data-catid="{{product.id}}" class="eliminateWish btn btn-info">Eliminate</button>
 						</div>
 					</div>
 				</div>
 			</div>
 			{% endfor %}
+			<br><br>
 		</div>
+		<br/><br/><br/><br/>
 	</div>
 </div>	
 

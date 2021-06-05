@@ -87,7 +87,7 @@
     text-align: center;
 }
 
-.cart_count span {
+.cart_count  {
     display: block;
     line-height: 23px;
     font-size: 12px;
@@ -144,6 +144,14 @@
  .header-nav{
       margin-bottom:100px;
  }
+ .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.cart_icon1{
+    margin-top:7px;
+}
 </style>
 
 
@@ -171,26 +179,26 @@
                 <a class="nav-link" href="#contact">Contact Us</a>
               </li>
                 
-                 <li class="nav-item">
-                         
-                         
-                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
-                            <div class="wishlist_icon">
-                                <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918681/heart.png" alt="">
+                
+                     <li class="nav-item">
+                        <div >
+                            <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                <div class="cart_icon1 "><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918681/heart.png" alt="">
+                                    <div id="num_wishes" class="cart_count">{{num_wishes}}</div>
+                                </div>
+                                <div class="cart_content e-2m" id="wishlist">
+                                    <div class="cart_text"><a href="{% url 'wishlist' %}">Wishlist</a></div>
+                                   
+                                </div>
                             </div>
-                            <div class="wishlist_content " id="wishlist">
-                                <div class="wishlist_text"><a href="{% url 'wishlist' %}">Wishlist</a></div>
-                                <div id="num_wishes" class="wishlist_count">{{num_wishes}}</div>
-                            </div>
-                        </div> <!-- Cart -->
-                    </li>
+                            </li>
                      <li class="nav-item">
                         <div >
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon "><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560918704/cart.png" alt="">
-                                    <div id="num_carts" class="cart_count"><span>{{num_carts}}</span></div>
+                                    <div id="num_carts" class="cart_count">{{num_carts}}</div>
                                 </div>
-                                <div class="cart_content me-2">
+                                <div class="cart_content e-2m">
                                     <div class="cart_text"><a href="{% url 'cart' %}">Cart</a></div>
                                     <div id="total" class="cart_price">${{total_price}}</div>
                                 </div>
@@ -202,6 +210,10 @@
                         data-bs-toggle="dropdown" aria-expanded="false">{{user.username}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    
+                     
+                       <li><a class="dropdown-item" href="{% url "dashboard_seller" %}">Seller Dashboard</a></li>
+	                    
                         <li><a class="dropdown-item" href="{% url 'view_account' %}">My Account</a></li>
                         <li><a class="dropdown-item" href="{% url  'change_passwordClient' %}">Change Password</a></li>
                         <li><a class="dropdown-item" href="{% url  'delete_account_client' %}">Delete Account</a></li>
@@ -219,46 +231,7 @@
     </div>
       </nav>
     </header>
-    <script>
-$(function(){
-// On recupere la position du bloc par rapport au haut du site
-var position_top_raccourci = $("#navigation").offset().top;
-
-//Au scroll dans la fenetre on déclenche la fonction
-$(window).scroll(function () {
-
-//si on a defile de plus de 150px du haut vers le bas
-if ($(this).scrollTop() > position_top_raccourci) {
-
-//on ajoute la classe "fixNavigation" a <div id="navigation">
-$('#navigation').addClass("fixNavigation"); 
-} else {
-
-//sinon on retire la classe "fixNavigation" a <div id="navigation">
-$('#navigation').removeClass("fixNavigation");
-}
-});
-});
-    $(function () {
-        $("#search").autocomplete({
-            source: "{% url 'search_form' %}",
-            select: function (event, ui) {
-                window.location.href = ui.item.value;
-            }
-        });
-    });
-
-
-const toggleButton = document.getElementsByClassName('toggle-button')[0]
-const navbarLinks = document.getElementsByClassName('navbar-links')[0]
-
-toggleButton.addEventListener('click', () => {
-  navbarLinks.classList.toggle('active')
-})
-
-</script>
-
-
+   
 
 
 
@@ -267,40 +240,21 @@ toggleButton.addEventListener('click', () => {
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script>
-$(function(){
-// On recupere la position du bloc par rapport au haut du site
-var position_top_raccourci = $("#navigation").offset().top;
+window.onscroll = function() {myFunction()};
 
-//Au scroll dans la fenetre on déclenche la fonction
-$(window).scroll(function () {
+// Get the navbar
+var navbar = document.getElementById("navigation");
 
-//si on a defile de plus de 150px du haut vers le bas
-if ($(this).scrollTop() > position_top_raccourci) {
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
 
-//on ajoute la classe "fixNavigation" a <div id="navigation">
-$('#navigation').addClass("fixNavigation"); 
-} else {
-
-//sinon on retire la classe "fixNavigation" a <div id="navigation">
-$('#navigation').removeClass("fixNavigation");
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
 }
-});
-});
-    $(function () {
-        $("#search").autocomplete({
-            source: "{% url 'search_form' %}",
-            select: function (event, ui) {
-                window.location.href = ui.item.value;
-            }
-        });
-    });
-
-
-const toggleButton = document.getElementsByClassName('toggle-button')[0]
-const navbarLinks = document.getElementsByClassName('navbar-links')[0]
-
-toggleButton.addEventListener('click', () => {
-  navbarLinks.classList.toggle('active')
-})
 
 </script>

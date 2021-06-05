@@ -26,14 +26,9 @@ def register(request):
         if form.is_valid():
             user = form.save()
             userType = form.cleaned_data.get('choice')
-            if userType == 'BOTH':
-                group1 = Group.objects.get(name='SELLER')
-                user.groups.add(group1)
-                group2 = Group.objects.get(name='CLIENT')
-                user.groups.add(group2)
-            else:
-                group = Group.objects.get(name=userType)
-                user.groups.add(group)
+           
+            group = Group.objects.get(name=userType)
+            user.groups.add(group)
             return redirect('login')
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
@@ -55,7 +50,7 @@ def login(request):
 
 
 @login_required
-@allowed_users(allowed_roles=[ 'CLIENT'])
+@allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def view_account(request):
     userform = User.objects.get(id=request.user.id)
     form = SettingsForm(instance=userform)
@@ -73,7 +68,7 @@ def view_account(request):
 
 
 @login_required
-@allowed_users(allowed_roles=[ 'CLIENT'])
+@allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def edit_account(request):
     if request.method == 'POST':
         form = UserChangeForm(request.POST, instance=request.user)
@@ -84,7 +79,7 @@ def edit_account(request):
 
 
 @login_required
-@allowed_users(allowed_roles=[ 'CLIENT'])
+@allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def password_reset_request(request):
     if request.method == "POST":
         password_reset_form = PasswordResetForm(request.POST)
@@ -115,7 +110,7 @@ def password_reset_request(request):
     return render(request=request, template_name="accounts/password_reset/password_reset.html", context={"password_reset_form": password_reset_form})
 
 @login_required
-@allowed_users(allowed_roles=[ 'CLIENT'])
+@allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def delete_account_client(request):
     user=request.user
     if request.method == "POST":

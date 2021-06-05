@@ -42,10 +42,18 @@
 <h2 style="text-align:center; color:rgba(97,188,217);">Feedbacks </h2>
 <hr>
 {%for f in feedbacks%}
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none'; ">&times;</span>
+<form action="{% url 'delete_feedback' f.id  %}" method="POST">
+				
+				{% csrf_token %}
+        <div class="alert">
+  <input class="closebtn"   type="submit" value="x" >&times;</input>
   <strong>{{f.date}} ||By : {{f.name}} ||Email : {{f.email}} </strong><br> {{f.subject}} <br> {{f.message}}
 </div>
+				
+
+			
+			</form>
+
 {%endfor%}
 
 

@@ -47,7 +47,7 @@ def checkout(request):
                     order.cart.add(cart)
                     
                     
-                carts.delete()
+               
                        
                     
                 return redirect('home')

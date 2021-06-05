@@ -10,7 +10,7 @@ from main.models import WishlistProduct, Cart,Order
 from accounts.forms import CreateUserForm,SettingsForm
 from django.contrib.auth.models import User
 
-@allowed_users(allowed_roles=['SELLER'])
+@allowed_users(allowed_roles=['SELLER','BOTH'])
 @login_required
 def show_dashboard(request):
     products_ordered= 0
@@ -73,7 +73,7 @@ def show_general(request):
 def show_change_password(request):
     return render(request, 'dashboard_seller/settings/changePassword.html')
 
-@allowed_users(allowed_roles=['SELLER'])
+@allowed_users(allowed_roles=['SELLER','BOTH'])
 @login_required
 def show_product(request):
     form = CreateProductForm()

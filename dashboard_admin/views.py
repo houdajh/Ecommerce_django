@@ -100,7 +100,8 @@ def view_feedback_view(request):
 
 # @login_required(login_url='login')
 def delete_feedback_view(request, pk):
-    feed = models.ContactUs.objects.get(id=pk)
+    feed = ContactUs.objects.get(id=pk)
+    print(feed.id)
     feed.delete()
     return redirect('view_feedback')
 

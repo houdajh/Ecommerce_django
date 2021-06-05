@@ -62,12 +62,14 @@ def home(request):
         group = 'ADMIN'
     if request.user.groups.filter(name='SELLER'):
         group = 'SELLER'
+    if request.user.groups.filter(name='BOTH'):
+        group = 'BOTH'
     myFilter =Product.objects.all()  
     product_obj_page=Product.objects.all() 
     if request.method == 'GET':
         myFilter = ProductFilter(request.GET, queryset=products)
         products_9 = myFilter.qs.order_by('-rates')[:9]
-        paginator_prod = Paginator(myFilter.qs, 2)
+        paginator_prod = Paginator(myFilter.qs, 12)
         page_number = request.GET.get('page')
         product_obj_page= paginator_prod.get_page(page_number)
 

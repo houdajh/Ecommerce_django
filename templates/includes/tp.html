@@ -1,9 +1,13 @@
 <style>
-
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 </style>
 
 
-  <header class="" id='navigation'>
+  <header class="" id='nnavigation'>
       <nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
         <div class="container">
           <a class="navbar-brand" href="{% url 'home' %}"><img src="../static/images/logo_BLACK.png"></a>
@@ -39,39 +43,21 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 <script>
-$(function(){
-// On recupere la position du bloc par rapport au haut du site
-var position_top_raccourci = $("#navigation").offset().top;
+window.onscroll = function() {myFunction()};
 
+// Get the navbar
+var navbar = document.getElementById("nnavigation");
 
-$(window).scroll(function () {
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
 
-
-if ($(this).scrollTop() > position_top_raccourci) {
-
-
-$('#navigation').addClass("fixNavigation"); 
-} else {
-
-$('#navigation').removeClass("fixNavigation");
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
 }
-});
-});
-    $(function () {
-        $("#search").autocomplete({
-            source: "{% url 'search_form' %}",
-            select: function (event, ui) {
-                window.location.href = ui.item.value;
-            }
-        });
-    });
-
-
-const toggleButton = document.getElementsByClassName('toggle-button')[0]
-const navbarLinks = document.getElementsByClassName('navbar-links')[0]
-
-toggleButton.addEventListener('click', () => {
-  navbarLinks.classList.toggle('active')
-})
 
 </script>

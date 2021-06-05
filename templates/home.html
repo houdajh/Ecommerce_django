@@ -4,9 +4,8 @@
 
 {% if group == 'SELLER' %}
 	{% include "dashboard_seller/home.html" %}
-{% elif group == 'ADMIN' %}
+
   
-    {% include "dashboard_admin/admin_dashboard.html" %}
 {% else %}
 	{% include "includes/navbar.html" %}
 {% endif %}
@@ -18,9 +17,9 @@
 
 {% block content %}
 
-{% if group == 'ADMIN' %}
+
 	
-{% elif group == 'SELLER' %}
+{% if group == 'SELLER' %}
 	
 {% else %}
 
@@ -518,7 +517,9 @@ textarea.input1 + .shadow-input1 {
     width: 100%;
   }
 }
-
+.c3{
+  margin-top:35px;
+}
 @media (max-width: 576px) {
   .container-contact1 {
     padding: 90px 15px 88px 15px;
@@ -674,6 +675,17 @@ textarea.input1 + .shadow-input1 {
       </div>
     </div>
 
+
+<!-- Filter Form -->
+<div class="best-features">
+      <div class="container">
+	   <div class="section-heading">
+              <h2 id ="product"><br><br><br><br>Search for your product</h2>
+            </div>
+{% include 'includes/filter_form.html' %}
+</div>
+</div>
+<br/>
 <!-- Products -->
 <div class="d-flex" id="products">
 	<div class="container">
@@ -681,18 +693,21 @@ textarea.input1 + .shadow-input1 {
 		<div class="row filtre ">
       
 			{% for product in product_obj_page %}
-			<div class="col-lg-4" id="product-{{product.id}}">
-				<div class="card" style="width: 18rem">
+			<div class="col-lg-3" id="product-{{product.id}}">
+				<div class="card c3" style="width: 19rem">
+          {% if product.photo %}
+   
 
-					 <a href="{% url 'view_product' product.id %}"><img src="{{product.photo.url}}" class="card-img-top" alt=""></a>
-					<div class="card-body">
+					 <a href="{% url 'view_product' product.id %}"><img src="{{product.photo.url}}" class="card-img-top" style="height:27em; width:21.6em;" alt=""></a>
+				{% endif %}
+        	<div class="card-body">
 						<h5 class="card-title">{{product.name}}</h5>
 						<hr />
-						<p class="card-text">{{product.description}}</p>
-						<p class="card-text">Price : {{product.price}}€</p>
+					  <br/>
+						<h5 class="card-text">Price : {{product.price}}€</h4>
 						<div class="d-flex">
-                <button  id="addCart" class="btn btn-secondary me-2 " onclick="window.location.reload()" data-product="{{product.id}}" data-action="add" href="#">Add To Cart</button>
-							<button id="addWishlist" data-catid="{{product.id}}" class="addWishlist btn btn-outline-success" href="#">Add To WishList</button>
+               <button  id="addCart" class="btn btn-secondary me-2 " onclick="window.location.reload()" data-product="{{product.id}}" data-action="add" href="#">Add To Cart</button>
+							<button id="addWishlist" data-catid="{{product.id}}" class="addWishlist btn btn-outline-info" href="#">Add To WishList</button>
 						</div>
 					</div>
 				</div>
@@ -711,7 +726,7 @@ textarea.input1 + .shadow-input1 {
        </div>
       <div class="pag1">
       {% if product_obj_page.has_next %}
-      <a class="pag1"  href="" id="next"> Next</a>
+      <a class="pag1"  href="?page={{product_obj_page.next_page_number}}" id="next"> Next</a>
       <a class="pag1"   href="?page={{product_obj_page.paginator.num_pages}}" target="self">Last &raquo;</a>
       {% endif %}
       </div>
@@ -724,8 +739,9 @@ textarea.input1 + .shadow-input1 {
 	<div class="row">
 		<h2 class="testimonial-heading">Our Testimonials</h2>
 	</div>
+  <br/>
 	<div class="row">
-		<div class="col span_1_of_3 testimonial-box">
+		<div class="col span_1_of_3 testimonial-box" style="margin-left:90px;">
 			<blockquote>
 				DIGI Shop help us to focus on products.
 			</blockquote>
@@ -733,13 +749,13 @@ textarea.input1 + .shadow-input1 {
 		</div>
 		<div class="col span_1_of_3 testimonial-box">
 			<blockquote>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+			W have been using DigiShop for the past 8 months and it was absolutly brilliant	.
 			</blockquote>
 			<cite><img src="../static/images/client-2.jpg" alt="Jeff Jones">Jeff Jones</cite>
 		</div>
 		<div class="col span_1_of_3 testimonial-box" id="contact">
 			<blockquote>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+				Exactly what i was looking for our shop, easy to set up and simple to use thank you.
 			</blockquote>
 			<cite><img src="../static/images/client-3.jpg" alt="Elenise da Conceicao" >Elenise da Conceicao</cite>
 		</div>
@@ -808,7 +824,7 @@ textarea.input1 + .shadow-input1 {
 //ADD TO CART:
 
 
-//ADD TO CART:
+////ADD TO CART:
 document.querySelectorAll('#addCart').forEach(item => {
     item.addEventListener('click',function(){
      
@@ -846,5 +862,4 @@ $('.addWishlist').click(function () {
 	});
  
 </script>
-
 {% endblock script %}
