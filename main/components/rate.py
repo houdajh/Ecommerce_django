@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from ..models import *
 
-
+#donner un rate positif a une produit
 @login_required
 def rated(request, pk):
     instance = Product.objects.get(pk=pk)
@@ -13,7 +13,7 @@ def rated(request, pk):
         instance.save()
     return redirect('view_product', pk=pk)
 
-
+#donner un rate negatif a un produit
 @login_required
 def unrated(request, pk):
     instance = Product.objects.get(pk=pk)

@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block main_navbar %}
-{% include "includes/top_navbar.html" %}
+{% include "includes/navbar.html" %}
 {% endblock main_navbar %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/stylecheckout.css' %}">
@@ -183,6 +183,7 @@
     
  
     <h2>Payment Gateway</h2>
+    <!--formulaire du checkout -->
     <form method="POST" class="form">
     {% csrf_token %}
       <div class="card22 space icon-relative">

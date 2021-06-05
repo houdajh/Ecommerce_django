@@ -10,7 +10,7 @@ from django.contrib.auth.models import Group
 from phone_field import PhoneField
 
 from django import forms
-# the User object is pretty much set by django.contrib.auth
+
 from django.contrib.auth.models import User
 # Create your models here
 
@@ -39,16 +39,15 @@ COLORS = (
     ('GRAY', 'GRAY'),
     ('WHITE', 'WHITE'),
 )
-category=(
-    ('Vetement','Vetement'),
-)
 
+
+#table categories 
 class Category(models.Model):
   
     category=models.CharField(max_length=200,null=True)
     def __str__(self):
         return self.category
-
+#table des feedback users 
 class ContactUs(models.Model):
     name=models.CharField(max_length=100)
     email=models.EmailField(max_length=100)
@@ -58,7 +57,9 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return self.name
+#table des produits
 class Product(models.Model):
+    #definit user comme cle etranger
     user=models.ForeignKey(
         User,on_delete=models.CASCADE
     )
@@ -77,10 +78,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
+    #definit des methodes du produit
     def get_display_price(self):
         return "{0:.2f}".format(self.price/10)
-
+    #calculer la moyenne des rates et l'afficher pour chaque produit
     def avg_rate(self):
         self.rates = (self.good_rates-self.bad_rates)/(self.bad_rates +
                                                        self.good_rates) if self.bad_rates+self.good_rates != 0 else 0
@@ -97,7 +98,7 @@ class ProductsRated(models.Model):
     def __str__(self):
         return self.product.name
 
-
+#table wishlist qui content les produits
 class WishlistProduct(models.Model):
     user = models.ForeignKey(
         User, related_name='wishlist', on_delete=models.CASCADE)
@@ -123,13 +124,13 @@ class Cart(models.Model):
 
 
 
-
+#table de payment informations
 class Checkout(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     adress_1 = models.CharField(max_length=100)
     adress_2 = models.CharField(max_length=100, blank=True)
     zip_code = models.CharField(max_length=100)
-
+#order est creer apres payment
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     cart = models.ManyToManyField(Cart,blank=True)
@@ -137,13 +138,5 @@ class Order(models.Model):
     status = models.CharField(max_length=200, null=True)
 
 
-class ProductsFeedBacks(models.Model):
-    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE, unique=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE,unique=False)
-    message = models.TextField()
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
-
-    def __str__(self):
-        return self.product.name
 
 
