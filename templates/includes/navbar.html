@@ -220,11 +220,11 @@
                       {% if group == 'BOTH' %}
                      <li><a class="dropdown-item" href="{% url 'dashboard_seller' %}">Seller dashboard</a></li>
 	                 {% endif %}
-                    
+                     {% if group != 'ADMIN' %}
                         <li><a class="dropdown-item" href="{% url 'view_account' %}">My Account</a></li>
                         <li><a class="dropdown-item" href="{% url  'change_passwordClient' %}">Change Password</a></li>
                         <li><a class="dropdown-item" href="{% url  'delete_account_client' %}">Delete Account</a></li>
-                        
+                        {% endif %}
         
                                         
                             <hr class="dropdown-divider">
