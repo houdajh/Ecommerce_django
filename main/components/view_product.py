@@ -20,7 +20,7 @@ def view_product(request, pk):
     total_price = 0
     for cart in carts:
         total_price += cart.cart_total_price()
-    s
+    
     
     
     all_rates = product.good_rates + product.bad_rates

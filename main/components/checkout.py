@@ -7,6 +7,7 @@ from django.contrib.auth.models import Group
 from main.forms import CreateProductForm
 
 @login_required
+
 def checkout(request):
     form = CheckoutForm()
     num_wishes = WishlistProduct.objects.count()
@@ -62,6 +63,8 @@ def checkout(request):
         group = 'ADMIN'
     if request.user.groups.filter(name='SELLER'):
         group = 'SELLER'
+    if request.user.groups.filter(name='BOTH'):
+        group = 'BOTH'
     context = {'form': form, 'group': group,
                'num_carts': num_carts, 'num_wishes': num_wishes, 'total_price': total_price}
     return render(request, 'checkout.html', context)

@@ -6,7 +6,7 @@ from ..models import *
 import json
 
 @login_required
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def cart(request):
     total_price = 0
     num_wishes = WishlistProduct.objects.count()
@@ -31,13 +31,15 @@ def cart(request):
         group = 'ADMIN'
     if request.user.groups.filter(name='SELLER'):
         group = 'SELLER'
+    if request.user.groups.filter(name='BOTH'):
+        group = 'BOTH'
     context = {'num_wishes': num_wishes, 'carts': carts, 'group': group,
                'num_carts': num_carts, 'total_price': total_price}
     return render(request, 'cart.html', context)
 
-
+#ajouter un produit au panier 
 @login_required
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def AddToCart(request):
     data = json.loads(request.body) 
     productId = data['productId']
@@ -61,24 +63,24 @@ def AddToCart(request):
         print(action)
     return JsonResponse("added",safe=False)
 
-
+#supprimer un produit du panier par son id
 @login_required
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def delete_cart(request, pk):
     cart = get_object_or_404(Cart, pk=pk)
     cart.delete()
     return redirect('cart')
 
-
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+#augmenter la quantite commande d'un produit par un user 
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def increase_quantity(request, pk):
     cart = Cart.objects.get(pk=pk)
     cart.quantity_carted += 1
     cart.save()
     return redirect('cart')
 
-
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+#diminuer la quantite commande d'un produit par un user 
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def decrease_quantity(request, pk):
     cart = Cart.objects.get(pk=pk)
     cart.quantity_carted -= 1

@@ -5,8 +5,9 @@ from django.http import JsonResponse
 from ..models import *
 
 
+#afficher wishlist pour l'utilisateur en request
 @login_required
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+@allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def wishlist(request):
     wishes = WishlistProduct.objects.all()
     num_wishes = wishes.count()
@@ -26,9 +27,9 @@ def wishlist(request):
                'num_carts': num_carts, 'total_price': total_price}
     return render(request, 'wishlist.html', context)
 
-
+#ajouter un produit a la liste des favoris
 @login_required
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def add_wishlist(request, pk):
     if request.method == 'GET':
         product_id = request.GET['product_id']
@@ -52,9 +53,9 @@ def add_wishlist(request, pk):
         return JsonResponse(data)
     return render(request, 'wishlist.html')
 
-
+#supprimer un produit du wishlist
 @login_required
-@allowed_users(allowed_roles=['ADMIN', 'CLIENT'])
+@allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def eliminate_wish(request, pk):
     if request.method == 'GET':
         product_id = request.GET['product_id']
