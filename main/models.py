@@ -121,7 +121,13 @@ class Cart(models.Model):
         total_cart = self.quantity_carted*self.product.price
         return total_cart
 
+class OrderedCart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity_carted = models.PositiveIntegerField(default=0)
 
+    def __str__(self):
+        return self.product.name
 
 
 #table de payment informations
@@ -133,7 +139,7 @@ class Checkout(models.Model):
 #order est creer apres payment
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    cart = models.ManyToManyField(Cart,blank=True)
+    OrderedCart = models.ManyToManyField(OrderedCart,blank=True)
     checkout_adress = models.ForeignKey(Checkout , on_delete=models.CASCADE,null=True)
     status = models.CharField(max_length=200, null=True)
 

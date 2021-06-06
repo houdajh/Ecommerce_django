@@ -20,22 +20,17 @@ def view_product(request, pk):
     total_price = 0
     for cart in carts:
         total_price += cart.cart_total_price()
-    group = ""
-    if request.user.groups.filter(name='CLIENT'):
-        group = 'CLIENT'
-    if request.user.groups.filter(name='ADMIN'):
-        group = 'ADMIN'
-    if request.user.groups.filter(name='SELLER'):
-        group = 'SELLER'
-    form = FeedBackForm()
+    s
+    
+    
     all_rates = product.good_rates + product.bad_rates
     
     context = {'product': product, 'rate_avg': rate_avg,
-               'num_wishes': num_wishes, 'group': group,
+               'num_wishes': num_wishes,
                'num_carts': num_carts, 'all_rates': all_rates,
                'real_rate': real_rate, 'num_carts': num_carts,
                'total_price': total_price,
-               'form':form}
+               }
     return render(request, 'view_product.html', context)
 
 

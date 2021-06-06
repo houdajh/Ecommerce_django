@@ -259,14 +259,7 @@ $('#navigation').removeClass("fixNavigation");
 }
 });
 });
-    $(function () {
-        $("#search").autocomplete({
-            source: "{% url 'search_form' %}",
-            select: function (event, ui) {
-                window.location.href = ui.item.value;
-            }
-        });
-    });
+    
 
 
 const toggleButton = document.getElementsByClassName('toggle-button')[0]

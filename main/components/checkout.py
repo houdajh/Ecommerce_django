@@ -34,7 +34,7 @@ def checkout(request):
                     zip_code = zipcode,
                    
                 )
-                order = Order.objects.create(user= request.user, checkout_adress= checkoutadress,status= 'Payed')
+                order = Order.objects.create(user=request.user, checkout_adress= checkoutadress,status= 'Payed')
                 order.save()
                 products=Product.objects.all()
                 for cart in carts:
@@ -44,10 +44,11 @@ def checkout(request):
                     else:
                         Product.objects.filter(pk=cart.product.id).update(quantity=cart.product.quantity)
                         print(cart.product.quantity)
-                    order.cart.add(cart)
+                        ordercart=OrderedCart.objects.create(user=request.user,product=cart.product,quantity_carted=cart.quantity_carted)
+                    order.OrderedCart.add(ordercart)
                     
                     
-               
+                carts.delete()
                        
                     
                 return redirect('home')
