@@ -24,7 +24,7 @@
 						<h5 class="card-title">{{product}}</h5>
 						<hr />
 						<div class="d-flex">
-							<button class="addCart btn btn-outline-secondary" id="addCart{{product.id}} " data-catid="{{product.id}}" href="#">Add To Cart</button>
+							<button  id="addCart" class="btn btn-secondary me-2 " onclick="window.location.reload()" data-product="{{product.id}}" data-action="add" href="#">Add To Cart</button>
 							<button id="eliminateWish" href="#" data-catid="{{product.id}}" class="eliminateWish btn btn-info">Eliminate</button>
 						</div>
 					</div>
@@ -41,20 +41,27 @@
 
 {% block script %}
 <script type="text/javascript">
-	$('.addCart').click(function () {
-		var catid = $(this).attr("data-catid");
-		$.ajax({
-			type: 'GET',
-			url: "/add_cart/".concat(catid),
-			data: {
-				product_id: catid
-			},
-			success: function (data) {
-				$('#total').replaceWith(data.total_price);
-				$('#num_carts').replaceWith(data.num_carts);
-			}
-		})
-	});
+	////ADD TO CART:
+document.querySelectorAll('#addCart').forEach(item => {
+    item.addEventListener('click',function(){
+     
+        let productId=this.dataset.product
+        let action =this.dataset.action
+		console.log(productId)
+		console.log(action)
+        var url = '/send_data/'
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-Type': 'application/json',
+                'X-CSRFToken':   csrf
+            },
+    
+            body: JSON.stringify({'productId': productId, 'action':action})
+        })
+})
+})
 	$('.eliminateWish').click(function(){
 		var catid = $(this).attr("data-catid");
 		$.ajax({

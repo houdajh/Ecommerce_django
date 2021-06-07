@@ -8,8 +8,8 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('prod/', views.show_product, name='prod'),
     path('statistics/', views.show_statistics, name='statistics'),
-    
-    
+    path('settings/change-password/done/', auth_views.PasswordChangeDoneView.as_view(
+        template_name='dashboard_seller/settings/change_password_success.html'), name=""),
     path('settings/general/', views.show_general, name='general'),
     path('resultsdata/', views.result_data, name='resultsdata'),
     path('update_product/<str:pk>/', views.update_product, name="update_product"),

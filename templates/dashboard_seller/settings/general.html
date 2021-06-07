@@ -1,4 +1,4 @@
-{% extends 'dashboard_seller/settings/base.html' %}
+{% extends 'dashboard_seller/dashboard.html' %}
 
 {% block content %}
 <div class="col-md-9">
@@ -10,7 +10,7 @@
 
             <div class="card-body">
                 <div class="form-group">
-                  <form method="POST" action="" novalidate>
+                  <form method="POST" action=="{% url 'general' %}" >
 					{% csrf_token %}
 					{% include "includes/form.html" %}
 					<div class="d-flex justify-content-center mt-3 login_container">
@@ -22,8 +22,6 @@
         </div>
     </div>
 </div>
-</div>
-</body>
 
-</html>
-{% endblock %}
+
+{% endblock content %}

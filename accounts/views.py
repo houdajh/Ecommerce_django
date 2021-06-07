@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from accounts.forms import CreateUserForm,SettingsForm
 
 from .forms import CreateUserForm
-from main.models import WishlistProduct, Cart
+from main.models import *
 from .decorators import unauthenticated_user, allowed_users
 
 #inscription d'un nouveau utilsateur 
@@ -54,6 +54,13 @@ def login(request):
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def view_account(request):
+    wishes = WishlistProduct.objects.all()
+    num_wishes = wishes.count()
+    carts = Cart.objects.filter(user=request.user)
+    num_carts = carts.count()
+    total_price = 0
+    for cart in carts:
+        total_price += cart.cart_total_price()
     userform = User.objects.get(id=request.user.id)
     form = SettingsForm(instance=userform)
     
@@ -64,7 +71,8 @@ def view_account(request):
         if form.is_valid():
             form.save()
             return redirect('general')
-    context = {'form': form}
+    context = {'form': form,'products': wishes, 'num_wishes': num_wishes, 
+               'num_carts': num_carts, 'total_price': total_price}
     return render(request, 'accounts/myAccount.html',context)
 
 
@@ -115,9 +123,17 @@ def password_reset_request(request):
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def delete_account_client(request):
+    wishes = WishlistProduct.objects.all()
+    num_wishes = wishes.count()
+    carts = Cart.objects.filter(user=request.user)
+    num_carts = carts.count()
+    total_price = 0
+    for cart in carts:
+        total_price += cart.cart_total_price()
     user=request.user
     if request.method == "POST":
         user.delete()
         return redirect('home')
-    context = {'user': user}
+    context = {'user': user,'products': wishes, 'num_wishes': num_wishes,
+               'num_carts': num_carts, 'total_price': total_price}
     return render(request, 'accounts/delete_account.html', context)
