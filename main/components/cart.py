@@ -49,9 +49,13 @@ def AddToCart(request):
     if action =='add':
         try:
             cart = Cart.objects.get(product= produit,user=request.user)
-            cart.quantity_carted +=1
+            
+            
         except:
             cart = Cart.objects.create(user=request.user, product= produit,quantity_carted=1)
+        som=product.quantity-cart.quantity_carted-1
+        if som >=0:
+            cart.quantity_carted += 1
         cart.save()
         if request.user.is_authenticated:
             numWishes = WishlistProduct.objects.filter(user=request.user).count()
@@ -75,7 +79,10 @@ def delete_cart(request, pk):
 @allowed_users(allowed_roles=['ADMIN', 'CLIENT','BOTH'])
 def increase_quantity(request, pk):
     cart = Cart.objects.get(pk=pk)
-    cart.quantity_carted += 1
+    product=Product.objects.get(pk=cart.product.pk)
+    som=product.quantity-cart.quantity_carted-1
+    if som >=0:
+        cart.quantity_carted += 1
     cart.save()
     return redirect('cart')
 

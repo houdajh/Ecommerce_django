@@ -40,7 +40,7 @@ def contactUs(request):
 def home(request):
     form=ContactUsForm()
     my_groups()
-    products = Product.objects.all()
+    products = Product.objects.exclude(quantity=0)
     products_9 = Product.objects.order_by('-rates')[:9]
     categories = Category.objects.all()[:9]
     total_price = 0

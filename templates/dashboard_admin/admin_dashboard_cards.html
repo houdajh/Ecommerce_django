@@ -23,6 +23,12 @@
       font-family: 'Carrois Gothic', sans-serif;
     }
 
+    .market-update-block h5 {
+      color: rgb(12, 12, 12);
+      font-size: 2em;
+      font-family: 'Carrois Gothic', sans-serif;
+    }
+
     .market-update-block h4 {
       font-size: 1.2em;
       color: #fff;
@@ -147,26 +153,32 @@
     <div class="col-md-4 market-update-gd">
       <div class="market-update-block clr-block-1">
         <div class="col-md-8 market-update-left">
-          <h3>{{customercount}}</h3>
-          <h4>Total Customer</h4>
-
+        <h5>Total Customer</h5>
+          <h3>Customers:{{customercount}}</h3>
+          <h3>BOTH:{{bothcount}}</h3>
+          
         </div>
         
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-user-o"></i>
+         <div class="col-md-4 market-update-right">
+          <i class="fa fa-shopping-basket"></i>
         </div>
         <div class="clearfix"> </div>
       </div>
     </div>
+
+
+
+    
     <div class="market-updates">
     <div class="col-md-4 market-update-gd">
       <div class="market-update-block clr-block-2">
         <div class="col-md-8 market-update-left">
-          <h3>{{seller_count}}</h3>
-          <h4>Total Seller</h4>
+        <h5 >Total<br> Seller</h5>
+          <h3>Sellers:{{seller_count}}</h3>
+          <h3>BOTH:{{bothcount}}</h3>
         </div>
-        <div class="col-md-4 market-update-right">
-          <i class="fa fa-user-o"></i>
+         <div class="col-md-4 market-update-right">
+          <i class="fa fa-shopping-basket"></i>
         </div>
         <div class="clearfix"> </div>
       </div>
@@ -174,8 +186,9 @@
     <div class="col-md-4 market-update-gd">
       <div class="market-update-block clr-block-3">
         <div class="col-md-8 market-update-left">
-          <h3>{{productcount}}</h3>
-          <h4>Total Product</h4>
+        <h5>Total <br>Product</h5>
+          <h3>{{productcount}}</h3> 
+          <h3>  <br></h3>    
         </div>
         <div class="col-md-4 market-update-right">
           <i class="fa fa-shopping-basket"></i>
@@ -187,11 +200,12 @@
     <div class="col-md-4 market-update-gd">
       <div class="market-update-block clr-block-3" >
         <div class="col-md-8 market-update-center">
+        <h5 >Total <br>Orders</h5>
           <h3>{{ordercount}}</h3>
-          <h4 >Total Orders</h4>
+          <h3>  <br></h3>
         </div>
         <div class="col-md-4 market-update-right">
-          <i class="fa fa-bar-chart"> </i>
+          <i class="fa fa-shopping-basket"></i>
         </div>
         <div class="clearfix"> </div>
       </div>
@@ -199,7 +213,7 @@
       </div>
     </div>
   </div>
-  <br><br>
+  <br><br><br><br><br><br><br><br>
 </body>
 
 

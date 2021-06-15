@@ -19,7 +19,7 @@ def admin_dashboard_view(request):
     # for cards on dashboard
     group = Group.objects.get(name='CLIENT')
     customercount = group.user_set.count()
-    productcount = Product.objects.count()
+    productcount = Product.objects.exclude(quantity=0).count()
     ordercount = Order.objects.count()
     group = Group.objects.get(name='SELLER')
     seller_count = group.user_set.count()
@@ -53,6 +53,13 @@ def view_customer_view(request):
     return render(request, 'dashboard_admin/view_customer.html', {'customers': customers})
 
 
+# admin view both table
+# @login_required(login_url='login')
+@allowed_users(allowed_roles=['ADMIN'])
+def view_both_view(request):
+    group = Group.objects.get(name='BOTH')
+    both = group.user_set.all()
+    return render(request, 'dashboard_admin/view_both.html', {'both': both})
 
 
 # admin view the product
@@ -60,7 +67,7 @@ def view_customer_view(request):
 
 @allowed_users(allowed_roles=['ADMIN'])
 def admin_products_view(request):
-    products =Product.objects.all()
+    products =Product.objects.exclude(quantity=0)
     return render(request, 'dashboard_admin/admin_products.html', {'products': products})
 
 

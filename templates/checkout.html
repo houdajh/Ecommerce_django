@@ -1,15 +1,9 @@
-{% extends "base.html" %}
 
-{% load static %}
+<!-- prettier-ignore -->
+{% extends 'base.html'%}
 {% load crispy_forms_tags %}
-
-{% block main_navbar %}
-{% include "includes/navbar.html" %}
-{% endblock main_navbar %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'css/stylecheckout.css' %}">
-{% block title %}Home{% endblock title %}
-
+{% block title %}CheckOut{% endblock title %}
+{% block main_navbar %}{% include "includes/navbar.html" %}{% endblock main_navbar %}
 {% block content %}
 {% if user.is_authenticated %}
 <style>

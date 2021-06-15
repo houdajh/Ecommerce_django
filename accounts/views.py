@@ -54,7 +54,7 @@ def login(request):
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def view_account(request):
-    wishes = WishlistProduct.objects.all()
+    wishes = WishlistProduct.objects.filter(user=request.user)
     num_wishes = wishes.count()
     carts = Cart.objects.filter(user=request.user)
     num_carts = carts.count()
@@ -123,7 +123,7 @@ def password_reset_request(request):
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def delete_account_client(request):
-    wishes = WishlistProduct.objects.all()
+    wishes = WishlistProduct.objects.filter(user=request.user)
     num_wishes = wishes.count()
     carts = Cart.objects.filter(user=request.user)
     num_carts = carts.count()

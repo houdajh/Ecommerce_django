@@ -102,8 +102,8 @@ class ProductsRated(models.Model):
 class WishlistProduct(models.Model):
     user = models.ForeignKey(
         User, related_name='wishlist', on_delete=models.CASCADE)
-    product = models.OneToOneField(
-        Product, on_delete=models.CASCADE, unique=True)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.product.name

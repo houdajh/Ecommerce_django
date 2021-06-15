@@ -83,6 +83,7 @@
             <table class="table">
                 <tr>
                     <th>Product</th>
+                    <th>Image</th>
                     <th>Category</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -90,6 +91,7 @@
                 {% for i in products %}
                 <tr>
                     <td>{{i.id}}</td>
+                    <td> <img src="{% static i.photo.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
                     <td>{{i.category}}</td>
                     <td>{{i.price}}</td>
                     <td>{{i.quantity}}</td>

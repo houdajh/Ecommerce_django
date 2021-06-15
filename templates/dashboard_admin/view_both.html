@@ -1,0 +1,53 @@
+{% extends 'dashboard_admin/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+  
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<br> <br> <br><br>
+<div class="container">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Total Both(customers / sellers) List</h3>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>  
+          <th>Email</th>  
+          
+        </tr>
+      </thead>
+      {% for c in both %}
+      <tr>
+        <td> {{c.username}}</td>
+        <td> {{c.email}}</td>
+        
+        
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+{% endblock content %}

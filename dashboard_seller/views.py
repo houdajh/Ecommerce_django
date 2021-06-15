@@ -18,7 +18,7 @@ def show_dashboard(request):
     paid_amount = 0
     total_order=0
     user=request.user
-    products = Product.objects.filter(user=request.user)
+    products = Product.objects.filter(user=request.user).exclude(quantity=0)
     nb_products=products.count()
     orders=  Order.objects.all()
     for order in orders:
@@ -35,12 +35,20 @@ def show_dashboard(request):
                 products_ordered+=cart.quantity_carted
         
         
-           
+    if request.user.groups.filter(name='CLIENT'):
+        group = 'CLIENT'
+    if request.user.groups.filter(name='ADMIN'):
+        group = 'ADMIN'
+    if request.user.groups.filter(name='SELLER'):
+        group = 'SELLER'
+    if request.user.groups.filter(name='BOTH'):
+        group = 'BOTH'     
     context={'nb_products':nb_products,
     'paid_amount':paid_amount,
     'products_ordered':products_ordered,
     'total_order': total_order,
-    'user':user}
+    'user':user,
+    'group':group}
 
     return render(request, 'dashboard_seller/home.html',context)
 
@@ -73,7 +81,7 @@ def show_change_password(request):
 @login_required
 def show_product(request):
     form = CreateProductForm()
-    products = Product.objects.filter(user=request.user)
+    products = Product.objects.filter(user=request.user).exclude(quantity=0)
     if request.method == 'POST':
         #request.files pour stocker les images dans un dossier media et son url dans la base donnee
         form = CreateProductForm(request.POST, request.FILES)
@@ -131,7 +139,7 @@ def update_product(request, pk):
 @login_required
 def result_data(request):
     date_data = []
-    products = Product.objects.filter(user=request.user)
+    products = Product.objects.filter(user=request.user).exclude(quantity=0)
     for i in products:
         date_data.append({i.name: i.quantity})
     print(date_data)

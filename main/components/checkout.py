@@ -10,8 +10,8 @@ from main.forms import CreateProductForm
 
 def checkout(request):
     form = CheckoutForm()
-    num_wishes = WishlistProduct.objects.count()
-    num_carts = Cart.objects.count()
+    num_wishes = WishlistProduct.objects.filter(user=request.user).count()
+    num_carts = Cart.objects.filter(user=request.user).count()
     total_price = 0
     if request.user.is_authenticated:
         carts = Cart.objects.filter(user=request.user)
@@ -40,12 +40,10 @@ def checkout(request):
                 products=Product.objects.all()
                 for cart in carts:
                     cart.product.quantity=cart.product.quantity-cart.quantity_carted
-                    if cart.product.quantity <=0:
-                        Product.objects.filter(pk=cart.product.id).delete()
-                    else:
-                        Product.objects.filter(pk=cart.product.id).update(quantity=cart.product.quantity)
-                        print(cart.product.quantity)
-                        ordercart=OrderedCart.objects.create(user=request.user,product=cart.product,quantity_carted=cart.quantity_carted)
+                    
+                    Product.objects.filter(pk=cart.product.id).update(quantity=cart.product.quantity)
+                        
+                    ordercart=OrderedCart.objects.create(user=request.user,product=cart.product,quantity_carted=cart.quantity_carted)
                     order.OrderedCart.add(ordercart)
                     
                     

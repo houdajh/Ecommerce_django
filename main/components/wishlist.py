@@ -9,7 +9,7 @@ from ..models import *
 @login_required
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def wishlist(request):
-    wishes = WishlistProduct.objects.all()
+    wishes = WishlistProduct.objects.filter(user=request.user)
     num_wishes = wishes.count()
     carts = Cart.objects.filter(user=request.user)
     num_carts = carts.count()
@@ -35,12 +35,16 @@ def add_wishlist(request, pk):
         product_id = request.GET['product_id']
         produit = Product.objects.get(pk=product_id)
         total_price = 0
-        num_wishes = WishlistProduct.objects.count()
+        
         carts = Cart.objects.all()
         num_carts = carts.count()
         if request.user.is_authenticated:
             owner = request.user
-            m = WishlistProduct.objects.create(user=owner, product=produit)
+            try:
+                m= WishlistProduct.objects.get(user=owner, product=produit)            
+            except:
+           
+                m = WishlistProduct.objects.create(user=owner, product=produit)
             m.save()
             num_wishes = WishlistProduct.objects.filter(user=owner).count()
             carts = Cart.objects.filter(user=owner)
@@ -59,11 +63,11 @@ def add_wishlist(request, pk):
 def eliminate_wish(request, pk):
     if request.method == 'GET':
         product_id = request.GET['product_id']
-        wish = WishlistProduct.objects.get(pk=pk)
+        wish = WishlistProduct.objects.filter(user=request.user).get(pk=pk)
         wish.delete()
         carts = Cart.objects.all()
         num_carts = carts.count()
-        num_wishes = WishlistProduct.objects.count()
+        num_wishes = WishlistProduct.objects.filter(user=request.user).count()
         total_price = 0
         for cart in carts:
             total_price += cart.cart_total_price()
