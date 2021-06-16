@@ -19,7 +19,9 @@ def admin_dashboard_view(request):
     # for cards on dashboard
     group = Group.objects.get(name='CLIENT')
     customercount = group.user_set.count()
-    productcount = Product.objects.exclude(quantity=0).count()
+    group = Group.objects.get(name='BOTH')
+    bothcount = group.user_set.count()
+    productcount = Product.objects.count()
     ordercount = Order.objects.count()
     group = Group.objects.get(name='SELLER')
     seller_count = group.user_set.count()
@@ -36,6 +38,7 @@ def admin_dashboard_view(request):
 
     mydict = {
         'customercount': customercount,
+        'bothcount': bothcount,
         'productcount': productcount,
         'ordercount': ordercount,
         'seller_count': seller_count,

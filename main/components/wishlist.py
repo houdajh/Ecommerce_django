@@ -10,6 +10,7 @@ from ..models import *
 @allowed_users(allowed_roles=[ 'CLIENT','BOTH'])
 def wishlist(request):
     wishes = WishlistProduct.objects.filter(user=request.user)
+    
     num_wishes = wishes.count()
     carts = Cart.objects.filter(user=request.user)
     num_carts = carts.count()

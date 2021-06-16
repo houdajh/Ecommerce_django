@@ -45,6 +45,9 @@ def checkout(request):
                         
                     ordercart=OrderedCart.objects.create(user=request.user,product=cart.product,quantity_carted=cart.quantity_carted)
                     order.OrderedCart.add(ordercart)
+                    if cart.product.quantity==0:
+                        wish=WishlistProduct.objects.filter(product_id=cart.product.id)
+                        wish.delete()
                     
                     
                 carts.delete()

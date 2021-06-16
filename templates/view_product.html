@@ -283,7 +283,7 @@ img{
                             <i class="bi bi-star"></i>
                             <i class="bi bi-star"></i>
                             {% endif %}
-                            {{real_rate}}%
+                            {{real_rate}}
                             <form action="{% url 'unrated' product.id %}" method="POST" novalidate>
                                 {% csrf_token %}
                                 <button type="submit" class=" s1 dislike"><i

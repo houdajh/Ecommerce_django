@@ -13,7 +13,7 @@ def view_product(request, pk):
     product = Product.objects.get(pk=pk)
     rate_avg = ceil(product.avg_rate()*5) if product.avg_rate() >= 0 else 0
     real_rate = int(product.avg_rate()*100) if product.avg_rate() >= 0 else 0
-    wishes = WishlistProduct.objects.all()
+    wishes = WishlistProduct.objects.filter(user=request.user)
     num_wishes = wishes.count()
     carts = Cart.objects.filter(user=request.user)
     num_carts = carts.count()

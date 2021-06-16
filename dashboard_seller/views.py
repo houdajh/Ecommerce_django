@@ -55,7 +55,16 @@ def show_dashboard(request):
 #afficher la page du statistique 
 @login_required
 def show_statistics(request):
-    return render(request, 'dashboard_seller/statistics.html')
+    if request.user.groups.filter(name='CLIENT'):
+        group = 'CLIENT'
+    if request.user.groups.filter(name='ADMIN'):
+        group = 'ADMIN'
+    if request.user.groups.filter(name='SELLER'):
+        group = 'SELLER'
+    if request.user.groups.filter(name='BOTH'):
+        group = 'BOTH' 
+    context={ 'group':group}   
+    return render(request, 'dashboard_seller/statistics.html',context)
 
 #afficher les informations general du vendeur et le donne l'acces pour changer ses infos
 def show_general(request):
@@ -95,9 +104,18 @@ def show_product(request):
            
     myFilter = ProductFilter(request.GET, queryset=products)
     products = myFilter.qs
+    if request.user.groups.filter(name='CLIENT'):
+        group = 'CLIENT'
+    if request.user.groups.filter(name='ADMIN'):
+        group = 'ADMIN'
+    if request.user.groups.filter(name='SELLER'):
+        group = 'SELLER'
+    if request.user.groups.filter(name='BOTH'):
+        group = 'BOTH'     
     #context specifie les arguments qu'il vont passet au template pour les afficher dans l'interface
     context = {'form': form, 'products': products,
                'myFilter': myFilter,
+               'group':group
                }
     return render(request, 'dashboard_seller/products.html', context)
 
