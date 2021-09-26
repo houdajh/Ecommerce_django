@@ -26,7 +26,7 @@ This sales platform must be able to offer a quality experience to visitors to th
 <a href="" target="_blank"> <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/> </a>
 
 
- **:thumbsup: Your support means a lot. It keeps me motivated adding more features to the app each time.**
+ **:thumbsup: Your support means a lot. It keeps us motivated .**
 
 
 
