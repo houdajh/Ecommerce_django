@@ -4,7 +4,11 @@ This sales platform must be able to offer a quality experience to visitors to th
  
  
 **Frontend via** : <a href="" target="_blank"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/> </a> 
-, https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white, https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white, https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E, 	https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white
+<a href="" target="_blank"> <img src=" https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/> </a> 
+<a href="" target="_blank"> <img src=" https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/> </a> 
+<a href="" target="_blank"> <img src="  https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/> </a>
+<a href="" target="_blank"> <img src=" https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white"/> </a>
+
 
 
 **Backend via** : Python, Django, PostgreSql 
