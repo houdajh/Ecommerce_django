@@ -25,6 +25,9 @@ This sales platform must be able to offer a quality experience to visitors to th
 <a href="" target="_blank"> <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/> </a>
 <a href="" target="_blank"> <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/> </a>
 
+**Free Support:**
+
+If you liked our work and you want to support us, follow us on github,and rate it :star::star::star::star::star: .
 
  **:thumbsup: Your support means a lot. It keeps us motivated .**
 
