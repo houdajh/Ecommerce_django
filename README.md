@@ -5,6 +5,10 @@ This sales platform must be able to offer a quality experience to visitors to th
  :boy:**Réaliser par** :point_right: <a href="https://github.com/houdajh"> **Houda Jouhar** </a> & <a href="https://github.com/IkrameNG">
  **Ikram Nouigua** </a>
  
+ 
+## :movie_camera: Animation 
+ https://user-images.githubusercontent.com/74733847/134820564-52988db8-c989-4069-bfa3-ff638f914eb1.mp4
+ 
 **Frontend via** :
 <p align="left"> 
 <a href="https://www.w3.org/html/" target="_blank"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/> </a> 
