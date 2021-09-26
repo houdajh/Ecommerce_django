@@ -2,6 +2,8 @@
 This sales platform must be able to offer a quality experience to visitors to the site. The back-office of the site must allow daily management of e-commerce activities.
  In addition, this site includes dashboards of sellers and an Admin dashboard to present a global vision on the progress of the business.
  
+ :boy:**Réaliser par** :point_right: <a href="https://github.com/houdajh"> **Houda Jouhar** </a> & <a href="https://github.com/IkrameNG">
+ **Ikram Nouigua** </a>
  
 **Frontend via** :
 <p align="left"> 
@@ -13,7 +15,10 @@ This sales platform must be able to offer a quality experience to visitors to th
 
 </p>
 
-**Backend via** : Python, Django, PostgreSql 
+**Backend via** :
+<a href="https://www.python.org" target="_blank"> <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=darkgreen"/> </a> 
+<a href="" target="_blank"> <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/> </a>
+<a href="" target="_blank"> <img src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white"/> </a>
 
-:boy:**Réaliser par** :point_right: <a href="https://github.com/houdajh"> **Houda Jouhar** </a> & <a href="https://github.com/IkrameNG">
- **Ikram Nouigua** </a> 
+
+ 
