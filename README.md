@@ -4,6 +4,8 @@ This sales platform must be able to offer a quality experience to visitors to th
  
  
  Frontend via: Html, CSS, Bootstrap, javascript, chart.js, ajax
+
+
  Backend via: Python, Django, PostgreSql 
 
 :boy:**Réaliser par** :point_right: <a href="https://github.com/houdajh"> **Houda Jouhar** </a> & <a href="https://github.com/IkrameNG">
